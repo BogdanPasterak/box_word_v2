@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/BogdanPasterak/box_word_v2/issues"
   },
-  "homepage": "https://github.com/BogdanPasterak/box_word_v2#readme"
+  "homepage": "https://github.com/BogdanPasterak/box_word_v2#readme",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
 }
