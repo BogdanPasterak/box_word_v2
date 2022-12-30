@@ -3,6 +3,7 @@ body {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url("./image/bg.jpg"); */
 }
 
 .procent {
@@ -11,5 +12,6 @@ body {
   width: 98vw;
   margin-block: 1vh 0;
   margin-inline: 1vw 0;
-  background-color: rgb(93, 202, 179);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
