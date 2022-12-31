@@ -7,8 +7,14 @@ function App() {
       id="div-in"
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <div>
+      <div className="title" id="title">
+        title
+      </div>
+      <div className="board" id="board">
         <img src="./favicon.ico" alt="" />
+      </div>
+      <div className="footer" id="footer">
+        footer
       </div>
     </div>
   );

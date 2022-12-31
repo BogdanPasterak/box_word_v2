@@ -7,11 +7,28 @@ body {
 }
 
 .procent {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   height: 98vh;
   width: 98vw;
   margin-block: 1vh 0;
   margin-inline: 1vw 0;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.title {
+  order: 1;
+  background-color: blanchedalmond;
+}
+
+.board {
+  order: 4;
+  background-color: azure;
+}
+
+.footer {
+  order: 5;
+  background-color: antiquewhite;
 }
