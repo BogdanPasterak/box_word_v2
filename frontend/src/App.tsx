@@ -1,4 +1,5 @@
 import bg from "./image/bg.jpg";
+import { print } from "./Scrypts";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <div className="box">
           <img src="./favicon.ico" alt="" />
         </div>
-        <div className="box"></div>
+        <div className="box" onClick={print}></div>
         <div className="box"></div>
         <div className="box"></div>
         <div className="box"></div>
