@@ -11,6 +11,7 @@ function sizeFitting() {
   let info = document.getElementById("info");
   let board = document.getElementById("board");
   let footer = document.getElementById("footer");
+  let boxes = document.querySelectorAll(".box");
   // screen size
   let w = div_in.clientWidth;
   let h = div_in.clientHeight;
@@ -18,13 +19,13 @@ function sizeFitting() {
   // console.log("w = ", w, "  h = ", h);
 
   // 100% width
-  box =
-    title.style.width =
+  box = w;
+  title.style.width =
     buttons.style.width =
     info.style.width =
     footer.style.width =
     board.style.width =
-      w + "px";
+      box + "px";
   // % of full hight
   title.style.height = Math.floor(h / 12) + "px";
   footer.style.height = Math.floor(h / 15) + "px";
@@ -59,10 +60,10 @@ function sizeFitting() {
         board.style.height =
           box + "px";
       board.style.position = "absolute";
-      board.style.left = w - box + w * 0.01 + "px";
+      board.style.left = Math.floor(w - box + w * 0.01) + "px";
       temp = h - title.clientHeight - footer.clientHeight - box;
-      board.style.top = temp + title.clientHeight + h * 0.01 + "px";
       info.style.height = temp + "px";
+      board.style.top = Math.floor(h * 0.01 + temp + title.clientHeight) + "px";
     } else if (w * 0.6 < h) {
       // console.log("hor 3:2");
       info.style.order = "2";
@@ -73,8 +74,9 @@ function sizeFitting() {
         Math.floor((h - title.clientHeight) / 2) + "px";
       board.style.width = board.style.height = footer.style.width = box + "px";
       footer.style.position = board.style.position = "absolute";
-      footer.style.left = board.style.left = w - box + w * 0.01 + "px";
-      temp = title.clientHeight + h * 0.01;
+      footer.style.left = board.style.left =
+        Math.floor(w - box + w * 0.01) + "px";
+      temp = Math.floor(title.clientHeight + h * 0.01);
       board.style.top = temp + "px";
       footer.style.top = temp + box + "px";
     } else {
@@ -94,4 +96,7 @@ function sizeFitting() {
       info.style.height = buttons.style.height = temp + "px";
     }
   }
+  // size of cards
+  temp = Math.floor(box / 3.05);
+  boxes.forEach((b) => (b.style.width = b.style.height = temp + "px"));
 }

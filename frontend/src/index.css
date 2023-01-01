@@ -31,9 +31,17 @@ body {
 }
 
 .board {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
   background-color: azure;
 }
 
 .footer {
   background-color: antiquewhite;
+}
+
+.box {
+  /* margin: 3px; */
 }

@@ -17,7 +17,17 @@ function App() {
         info
       </div>
       <div className="board" id="board">
-        <img src="./favicon.ico" alt="" />
+        <div className="box">
+          <img src="./favicon.ico" alt="" />
+        </div>
+        <div className="box"></div>
+        <div className="box"></div>
+        <div className="box"></div>
+        <div className="box"></div>
+        <div className="box"></div>
+        <div className="box"></div>
+        <div className="box"></div>
+        <div className="box"></div>
       </div>
       <div className="footer" id="footer">
         footer
