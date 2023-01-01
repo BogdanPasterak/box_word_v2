@@ -19,7 +19,6 @@ body {
 }
 
 .title {
-  order: 1;
   background-color: blanchedalmond;
 }
 
@@ -32,11 +31,9 @@ body {
 }
 
 .board {
-  order: 4;
   background-color: azure;
 }
 
 .footer {
-  order: 5;
   background-color: antiquewhite;
 }
