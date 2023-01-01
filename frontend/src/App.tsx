@@ -10,6 +10,12 @@ function App() {
       <div className="title" id="title">
         title
       </div>
+      <div className="buttons" id="buttons">
+        buttons
+      </div>
+      <div className="info" id="info">
+        info
+      </div>
       <div className="board" id="board">
         <img src="./favicon.ico" alt="" />
       </div>
