@@ -3,7 +3,7 @@ import m10 from "./image/m10.png";
 import m11 from "./image/m11.png";
 import m12 from "./image/m12.png";
 import m13 from "./image/m13.png";
-import { print, generateStub } from "./Scrypts";
+import { print, generateStub } from "./scripts";
 
 function App() {
   let result = generateStub();
