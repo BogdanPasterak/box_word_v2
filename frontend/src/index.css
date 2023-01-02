@@ -46,3 +46,7 @@ body {
   /* margin: 3px; */
   background-color: yellow;
 }
+
+.box > img {
+  width: 100%;
+}
