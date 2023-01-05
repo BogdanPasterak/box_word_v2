@@ -1,5 +1,5 @@
-export function print() {
-  console.log("Bogdan");
+export function print(s: string) {
+  console.log("Bogdan", s);
 }
 
 // generete random set with letters A,B,C,D

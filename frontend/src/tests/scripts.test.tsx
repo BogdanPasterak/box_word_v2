@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { generateStub, winTest } from "./scripts";
+import { generateStub, winTest } from "../scripts/scripts";
 
 describe("Testing generateStub", () => {
   const abcd = ["A", "B", "C", "D"];
