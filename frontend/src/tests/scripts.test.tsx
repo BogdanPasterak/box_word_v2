@@ -1,9 +1,11 @@
 import { render } from "@testing-library/react";
+import { BoardObj } from "../models/board";
 import { generateStub, winTest } from "../scripts/scripts";
 
 describe("Testing generateStub", () => {
-  const abcd = ["A", "B", "C", "D"];
-  let answer = generateStub();
+  const obj = generateStub();
+  const abcd = obj.word.split("");
+  const answer = obj.board;
 
   test(`should be string "${answer}"`, () => {
     expect(typeof answer).toBe("string");
@@ -37,6 +39,7 @@ describe("Testing generateStub", () => {
 });
 
 describe("Testing winTest", () => {
+  // 11 wining sets
   const win = [
     "ABCD*********** ",
     "A***B***C***D** ",
@@ -55,7 +58,7 @@ describe("Testing winTest", () => {
 
   // test win set
   win.forEach((w) => {
-    answer = winTest(w, word);
+    answer = winTest(new BoardObj(w, word));
     test(`should be win "${w}"`, () => {
       expect(answer).toBeTruthy();
     });

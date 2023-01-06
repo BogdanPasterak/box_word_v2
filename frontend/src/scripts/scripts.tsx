@@ -1,9 +1,11 @@
+import { Board, BoardObj } from "../models/board";
+
 export function print(s: string) {
   console.log("Bogdan", s);
 }
 
 // generete random set with letters A,B,C,D
-export function generateStub(): string {
+export function generateStub(): BoardObj {
   let temp: string[] = "*************** ".split("");
   let index = 15;
 
@@ -16,12 +18,15 @@ export function generateStub(): string {
     temp[index] = e;
   });
 
-  // connect to string
-  return temp.join("");
+  // connect to string add word and return
+  return new BoardObj(temp.join(""), "ABCD");
 }
 
 // test if board match word
-export function winTest(b: string, word: string): boolean {
+export function winTest(obj: Board): boolean {
+  const b = obj.board;
+  const word = obj.word;
+
   // first position top left corner - 3 posible
   if (b[0] === word[0]) {
     if (
