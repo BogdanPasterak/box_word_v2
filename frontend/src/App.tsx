@@ -18,7 +18,7 @@ import { print, generateStub } from "./scripts/scripts";
 
 function App() {
   let result = generateStub();
-  console.log("-" + result + "-");
+  // console.log("-" + result + "-");
 
   return (
     <div

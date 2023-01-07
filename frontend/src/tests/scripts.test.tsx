@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { BoardObj } from "../models/board";
-import { generateStub, winTest } from "../scripts/scripts";
+import { generateStub, nextMoves, winTest } from "../scripts/scripts";
 
 describe("Testing generateStub", () => {
   const obj = generateStub();
@@ -61,6 +61,51 @@ describe("Testing winTest", () => {
     answer = winTest(new BoardObj(w, word));
     test(`should be win "${w}"`, () => {
       expect(answer).toBeTruthy();
+    });
+  });
+});
+
+describe("Testing nextMoves", () => {
+  const moves = [
+    [1, 4],
+    [0, 2, 5],
+    [1, 3, 6],
+    [2, 7],
+    [0, 5, 8],
+    [1, 4, 6, 9],
+    [2, 5, 7, 10],
+    [3, 6, 11],
+    [4, 9, 12],
+    [5, 8, 10, 13],
+    [6, 9, 11, 14],
+    [7, 10, 15],
+    [8, 13],
+    [9, 12, 14],
+    [10, 13, 15],
+    [11, 14],
+  ];
+  const back = [
+    { p: 1, m: [4, 6, 9] },
+    { p: 4, m: [1, 6, 9] },
+    { p: 6, m: [1, 4, 9] },
+    { p: 9, m: [1, 4, 6] },
+  ];
+  const obj = new BoardObj("ABCD*********** ", "ABCD");
+
+  // moves without back (all neighbors)
+  moves.forEach((m, index) => {
+    test(`should be [${m.toString()}] and index = ${index}`, () => {
+      obj.pos = index;
+      expect(nextMoves(obj)).toEqual(m);
+    });
+  });
+
+  // position 5 (4 neighbors) with back from all side
+  back.forEach((o) => {
+    test(`should be [1, 4, 6, 9] without [${o.p}]`, () => {
+      obj.pos = 5;
+      obj.from.push(o.p);
+      expect(nextMoves(obj)).toEqual(o.m);
     });
   });
 });

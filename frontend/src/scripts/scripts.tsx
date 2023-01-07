@@ -64,3 +64,21 @@ export function winTest(obj: Board): boolean {
   }
   return false;
 }
+
+export function nextMoves(obj: Board): number[] {
+  let next = [];
+
+  // add up to 4 neighbors
+  if (obj.pos > 3) next.push(obj.pos - 4);
+  if (obj.pos % 4 > 0) next.push(obj.pos - 1);
+  if (obj.pos % 4 < 3) next.push(obj.pos + 1);
+  if (obj.pos < 12) next.push(obj.pos + 4);
+
+  // minus last one move (no back)
+  if (obj.from.length) {
+    let index = next.indexOf(next[obj.from.length - 1]);
+    if (index > -1) next.splice(index, 1);
+  }
+
+  return next;
+}
