@@ -44,12 +44,12 @@ export class BoardObj implements Board {
   back() {
     if (this.from.length) {
       let old = this.from.pop() || -1;
-      let swap = this.board[this.pos];
+      let swap = this.board[old];
 
       // swap two element [space and element at index p]
       this.board = this.board
         .split("")
-        .map((e, i) => (i === old ? swap : i === this.pos ? " " : e))
+        .map((e, i) => (i === old ? " " : i === this.pos ? swap : e))
         .join("");
 
       // new positoion space
