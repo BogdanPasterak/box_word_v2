@@ -79,6 +79,7 @@ export function nextMoves(obj: Board): number[] {
     let index = next.indexOf(next[obj.from.length - 1]);
     if (index > -1) next.splice(index, 1);
   }
-
   return next;
 }
+
+export function bfs(obj: Board) {}
