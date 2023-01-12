@@ -1,11 +1,11 @@
 import { BoardObj } from "../models/board";
-import { nextMoves, winTest } from "./scripts";
+import { nextMoves, winTest, generateStub } from "./scripts";
 
 export function bfs(obj: BoardObj): BoardObj {
   // starting element
   let current: BoardObj = obj.copy();
   let list: BoardObj[] = [current];
-  let save: number = 50;
+  let save: number = 18674;
 
   while (list.length && save > 0) {
     save--;
@@ -33,7 +33,7 @@ export function bfs(obj: BoardObj): BoardObj {
       });
     }
   }
-  console.log("--- BFS --- save work ---");
+  console.log(`--- BFS --- save work --- List - ${list.length}`);
 
   return current;
 }
@@ -45,4 +45,9 @@ export function bfsStart() {
   // let obj = new BoardObj("********ABC ***D", "ABCD");
   // obj.pos = 11;
   // bfs(obj);
+  let obj = generateStub();
+  console.log("============== START ================");
+
+  console.log(obj.toString());
+  console.log(bfs(obj).toString());
 }
