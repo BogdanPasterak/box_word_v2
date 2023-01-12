@@ -1,4 +1,4 @@
-import { Board, BoardObj, NextMove } from "../models/board";
+import { Board, BoardObj } from "../models/board";
 
 export function print(s: string) {
   console.log("Bogdan", s);
@@ -76,7 +76,7 @@ export function nextMoves(obj: Board): number[] {
 
   // minus last one move (no back)
   if (obj.from.length) {
-    let index = next.indexOf(next[obj.from.length - 1]);
+    let index = next.indexOf(obj.from[obj.from.length - 1]);
     if (index > -1) next.splice(index, 1);
   }
   return next;

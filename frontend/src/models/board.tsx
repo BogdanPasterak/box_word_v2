@@ -26,7 +26,7 @@ export class BoardObj implements Board {
     return c;
   }
 
-  move(p: number) {
+  move(p: number): BoardObj {
     let swap = this.board[p];
 
     // swap two element [space and element at index p]
@@ -39,6 +39,7 @@ export class BoardObj implements Board {
     this.from.push(this.pos);
     // new positoion space
     this.pos = p;
+    return this;
   }
 
   back() {
@@ -56,14 +57,17 @@ export class BoardObj implements Board {
       this.pos = old;
     }
   }
-}
 
-export class NextMove {
-  obj: BoardObj;
-  dir: number;
+  public toString = (): string => {
+    let s = this.board.substring(0, 4).split("").join(" ");
+    s += `\tword  - ${this.word}\n`;
+    s += this.board.substring(4, 8).split("").join(" ");
+    s += `\tspace - ${this.pos}\n`;
+    s += this.board.substring(8, 12).split("").join(" ");
+    s += `\tlevel - ${this.from.length}\n`;
+    s += this.board.substring(12).split("").join(" ");
+    s += `\tfrom  - [${this.from.toString()}]`;
 
-  constructor(obj: BoardObj, dir: number) {
-    this.obj = obj;
-    this.dir = dir;
-  }
+    return s;
+  };
 }

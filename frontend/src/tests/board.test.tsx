@@ -8,7 +8,10 @@ describe("Testing copy board object", () => {
   const copy = obj.copy();
 
   test("should be same", () => {
-    expect(obj).toEqual(copy);
+    expect(obj.board).toBe(copy.board);
+    expect(obj.word).toBe(copy.word);
+    expect(obj.pos).toBe(copy.pos);
+    expect(obj.from).toEqual(copy.from);
   });
 });
 
