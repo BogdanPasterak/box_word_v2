@@ -18,7 +18,7 @@ export class BoardObj implements Board {
     this.pos = 15;
   }
 
-  copy(): Board {
+  copy(): BoardObj {
     let c = new BoardObj(this.board, this.word);
     c.pos = this.pos;
     c.from = [...this.from];
@@ -55,5 +55,15 @@ export class BoardObj implements Board {
       // new positoion space
       this.pos = old;
     }
+  }
+}
+
+export class NextMove {
+  obj: BoardObj;
+  dir: number;
+
+  constructor(obj: BoardObj, dir: number) {
+    this.obj = obj;
+    this.dir = dir;
   }
 }

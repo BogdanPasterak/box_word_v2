@@ -1,4 +1,4 @@
-import { Board, BoardObj } from "../models/board";
+import { Board, BoardObj, NextMove } from "../models/board";
 
 export function print(s: string) {
   console.log("Bogdan", s);
@@ -81,5 +81,3 @@ export function nextMoves(obj: Board): number[] {
   }
   return next;
 }
-
-export function bfs(obj: Board) {}
