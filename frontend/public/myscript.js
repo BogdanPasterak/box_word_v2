@@ -14,7 +14,7 @@ function sizeFitting() {
   let boxes = document.querySelectorAll(".box");
   // screen size
   let w = div_in.clientWidth;
-  let h = div_in.clientHeight;
+  let h = div_in.clientHeight - 1;
   let temp, box;
   // console.log("w = ", w, "  h = ", h);
 
@@ -97,6 +97,6 @@ function sizeFitting() {
     }
   }
   // size of cards
-  temp = Math.floor(box / 3.05);
+  temp = Math.floor(box / 4.05);
   boxes.forEach((b) => (b.style.width = b.style.height = temp + "px"));
 }
