@@ -34,7 +34,7 @@ export function bfs(obj: BoardObj): BoardObj {
       // eslint-disable-next-line no-loop-func
       nextMoves(current).forEach((direction) => {
         // add if level is less than
-        if (current.from.length < 17) list.push(current.copy().move(direction));
+        if (current.from.length < 18) list.push(current.copy().move(direction));
       });
     }
   }
