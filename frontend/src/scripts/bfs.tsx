@@ -10,6 +10,8 @@ export function bfs(obj: BoardObj): BoardObj {
   let steps = [];
   let count = 0;
   let start = Date.now();
+  let temp = 0;
+  let now = 0;
 
   while (list.length) {
     if (index < current.from.length) {
@@ -17,6 +19,12 @@ export function bfs(obj: BoardObj): BoardObj {
       index++;
     }
     count++;
+    if (!(count % 10000)) {
+      now = Date.now() - start;
+      console.log(`Level - ${index} , mili secound - ${now - temp}`);
+      temp = now;
+    }
+
     current = list.shift()!;
 
     if (winTest(current)) {
