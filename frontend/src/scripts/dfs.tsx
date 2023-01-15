@@ -13,19 +13,24 @@ export function dfs(obj: BoardObj): BoardObj {
   let now = 0;
 
   // deeps level limit
-  for (let l = 0; l < 2; l++) {
+  for (let l = 0; l < 20; l++) {
+    console.log(`------- Level ${l} ---------`);
+
     stack = [obj.copy()];
     while (stack.length) {
+      // count++;
+      // if (count > 50) break;
       current = stack.pop()!;
-      console.log(current.toString());
       // if match
-      if (current.from.length < l) continue;
+      if (current.from.length > l) continue;
+      // console.log(current.toString() + "  Size : " + stack.length);
       if (winTest(current)) break;
       // eslint-disable-next-line no-loop-func
       nextMoves(current).forEach((direction) => {
         stack.push(current.copy().move(direction));
       });
     }
+    if (winTest(current)) break;
   }
   return current;
 }
@@ -40,6 +45,7 @@ export function dfsStart() {
   let obj = generateStub();
   console.log("============== START ================");
   console.log(obj.toString());
+  obj = dfs(obj);
   console.log("============== STOP ================");
-  console.log(dfs(obj).toString());
+  console.log(obj.toString());
 }
