@@ -56,6 +56,7 @@ export class BoardObj implements Board {
       // new positoion space
       this.pos = old;
     }
+    return this;
   }
 
   public toString = (): string => {

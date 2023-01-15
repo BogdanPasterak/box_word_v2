@@ -16,6 +16,7 @@ import m23 from "./image/m23.png";
 import m24 from "./image/m24.png";
 import { print, generateStub } from "./scripts/scripts";
 import { bfsStart } from "./scripts/bfs";
+import { dfsStart } from "./scripts/dfs";
 
 function App() {
   let result = generateStub();
@@ -32,6 +33,7 @@ function App() {
       </div>
       <div className="buttons" id="buttons">
         <button onClick={bfsStart}>BFS</button>
+        <button onClick={dfsStart}>DFS</button>
       </div>
       <div className="info" id="info">
         info
