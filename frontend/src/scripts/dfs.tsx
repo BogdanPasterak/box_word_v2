@@ -14,17 +14,18 @@ export function dfs(obj: BoardObj): BoardObj {
 
   // deeps level limit
   for (let l = 0; l < 20; l++) {
-    console.log(`------- Level ${l} ---------`);
+    // console.log(`------- Level ${l} ---------`);
+    steps.push({ index: l, stop: Date.now() });
 
     stack = [obj.copy()];
     while (stack.length) {
-      // count++;
-      // if (count > 50) break;
+      // log for show work
+      if (!(++count % 5000000)) console.log(Date.now() - start);
       current = stack.pop()!;
-      // if match
+      // if over deeps
       if (current.from.length > l) continue;
-      // console.log(current.toString() + "  Size : " + stack.length);
-      if (winTest(current)) break;
+      // if on deep test off win (before was detected in previose one loop)
+      if (current.from.length === l && winTest(current)) break;
       // eslint-disable-next-line no-loop-func
       nextMoves(current).forEach((direction) => {
         stack.push(current.copy().move(direction));
@@ -32,20 +33,20 @@ export function dfs(obj: BoardObj): BoardObj {
     }
     if (winTest(current)) break;
   }
+  steps.map((e) => (e.stop = (e.stop - start) / 1000));
+  steps.map((e) => console.log(e));
+
+  console.log(`--- steps = ${count}`);
+
   return current;
 }
 
 export function dfsStart() {
-  // 0
-  // bfs(new BoardObj("********ABCD*** ", "ABCD"));
-  // 1
-  // let obj = new BoardObj("********ABC ***D", "ABCD");
-  // obj.pos = 11;
-
   let obj = generateStub();
   console.log("============== START ================");
   console.log(obj.toString());
   obj = dfs(obj);
-  console.log("============== STOP ================");
+  if (winTest(obj)) console.log("=============  W  I  N  ================");
+  else console.log("============== STOP ================");
   console.log(obj.toString());
 }

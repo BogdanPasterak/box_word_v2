@@ -1,0 +1,36 @@
+
+
+============== START ================
+* D * *	word  - ABCD
+C * * *	space - 15
+* B * A	level - 0
+* * *  	from  - []
+============== STOP ================
+* C D *	word  - ABCD
+  * * *	space - 4
+* B * *	level - 23
+* * * A	from  - [15,11,7,3,2,1,0,4,5,1,0,4,5,1,0,4,5,1,0,4,5,1,0]
+
+{index: 0, stop: 0}
+{index: 1, stop: 0}
+{index: 2, stop: 0.001}
+{index: 3, stop: 0.001}
+{index: 4, stop: 0.002}
+{index: 5, stop: 0.002}
+{index: 6, stop: 0.004}
+{index: 7, stop: 0.005}
+{index: 8, stop: 0.006}
+{index: 9, stop: 0.009}
+{index: 10, stop: 0.017}
+{index: 11, stop: 0.034}
+{index: 12, stop: 0.057}
+{index: 13, stop: 0.109}
+{index: 14, stop: 0.219}
+{index: 15, stop: 0.459}
+{index: 16, stop: 0.965}
+{index: 17, stop: 2.078}
+{index: 18, stop: 4.488}
+{index: 19, stop: 9.742}
+{index: 20, stop: 21.147}
+{index: 21, stop: 46.185}
+{index: 22, stop: 100.969}
