@@ -1,7 +1,7 @@
 import { BoardObj } from "../models/board";
 import { nextMoves, winTest, generateStub } from "./scripts";
 
-export function dfs(obj: BoardObj): BoardObj {
+export function a(obj: BoardObj): BoardObj {
   // starting element
   let current: BoardObj = obj.copy();
   let stack: BoardObj[];
@@ -41,11 +41,11 @@ export function dfs(obj: BoardObj): BoardObj {
   return current;
 }
 
-export function dfsStart() {
+export function aStart() {
   let obj = generateStub();
   console.log("============== START ================");
   console.log(obj.toString());
-  obj = dfs(obj);
+  obj = a(obj);
   if (winTest(obj)) console.log("=============  W  I  N  ================");
   else console.log("============== STOP ================");
   console.log(obj.toString());
