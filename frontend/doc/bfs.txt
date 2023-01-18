@@ -1,0 +1,207 @@
+Results from the first BFS algorithm, 17 levels.
+
+============== START ================
+bfs.tsx:58 * * * C	word  - ABCD
+D * A *	space - 15
+* * * *	level - 0
+* * B  	from  - []
+
+--- BFS --- save work --- count - 1745511
+{index: 0, count: 2, stop: 0}
+{index: 1, count: 4, stop: 0}
+{index: 2, count: 8, stop: 0}
+{index: 3, count: 18, stop: 0.001}
+{index: 4, count: 42, stop: 0.001}
+{index: 5, count: 96, stop: 0.002}
+{index: 6, count: 204, stop: 0.002}
+{index: 7, count: 422, stop: 0.005}
+{index: 8, count: 894, stop: 0.008}
+{index: 9, count: 1924, stop: 0.015}
+{index: 10, count: 4128, stop: 0.041}
+{index: 11, count: 8794, stop: 0.067}
+{index: 12, count: 18674, stop: 0.111}
+{index: 13, count: 39720, stop: 1.194}
+{index: 14, count: 84692, stop: 5.419}
+{index: 15, count: 180622, stop: 21.505}
+{index: 16, count: 384838, stop: 87.386}
+{index: 17, count: 819532, stop: 385.796}
+
+bfs.tsx:59 * * * C	word  - ABCD
+D * A *	space - 10
+* *   *	level - 18
+* * * B	from  - [15,14,13,12,8,9,13,14,15,11,10,14,15,11,10,14,15,11]
+
+Level - 12 , mili secound - 72
+bfs.tsx:24 Level - 13 , mili secound - 48
+bfs.tsx:24 Level - 13 , mili secound - 464
+bfs.tsx:24 Level - 14 , mili secound - 631
+bfs.tsx:24 Level - 14 , mili secound - 744
+bfs.tsx:24 Level - 14 , mili secound - 870
+bfs.tsx:24 Level - 14 , mili secound - 993
+bfs.tsx:24 Level - 14 , mili secound - 1042
+bfs.tsx:24 Level - 15 , mili secound - 1201
+bfs.tsx:24 Level - 15 , mili secound - 1299
+bfs.tsx:24 Level - 15 , mili secound - 1296
+bfs.tsx:24 Level - 15 , mili secound - 1516
+bfs.tsx:24 Level - 15 , mili secound - 1604
+bfs.tsx:24 Level - 15 , mili secound - 1711
+bfs.tsx:24 Level - 15 , mili secound - 1827
+bfs.tsx:24 Level - 15 , mili secound - 1914
+bfs.tsx:24 Level - 15 , mili secound - 2017
+bfs.tsx:24 Level - 15 , mili secound - 2118
+bfs.tsx:24 Level - 16 , mili secound - 2289
+bfs.tsx:24 Level - 16 , mili secound - 2330
+bfs.tsx:24 Level - 16 , mili secound - 2436
+bfs.tsx:24 Level - 16 , mili secound - 2546
+bfs.tsx:24 Level - 16 , mili secound - 2690
+bfs.tsx:24 Level - 16 , mili secound - 2744
+bfs.tsx:24 Level - 16 , mili secound - 2847
+bfs.tsx:24 Level - 16 , mili secound - 3008
+bfs.tsx:24 Level - 16 , mili secound - 3056
+bfs.tsx:24 Level - 16 , mili secound - 3151
+bfs.tsx:24 Level - 16 , mili secound - 3254
+bfs.tsx:24 Level - 16 , mili secound - 3444
+bfs.tsx:24 Level - 16 , mili secound - 3467
+bfs.tsx:24 Level - 16 , mili secound - 3561
+bfs.tsx:24 Level - 16 , mili secound - 3792
+bfs.tsx:24 Level - 16 , mili secound - 3867
+bfs.tsx:24 Level - 16 , mili secound - 3864
+bfs.tsx:24 Level - 16 , mili secound - 3972
+bfs.tsx:24 Level - 16 , mili secound - 3808
+bfs.tsx:24 Level - 16 , mili secound - 3833
+bfs.tsx:24 Level - 17 , mili secound - 4270
+bfs.tsx:24 Level - 17 , mili secound - 4347
+bfs.tsx:24 Level - 17 , mili secound - 4441
+bfs.tsx:24 Level - 17 , mili secound - 4671
+bfs.tsx:24 Level - 17 , mili secound - 4661
+bfs.tsx:24 Level - 17 , mili secound - 4762
+bfs.tsx:24 Level - 17 , mili secound - 4856
+bfs.tsx:24 Level - 17 , mili secound - 5114
+bfs.tsx:24 Level - 17 , mili secound - 5076
+bfs.tsx:24 Level - 17 , mili secound - 5187
+bfs.tsx:24 Level - 17 , mili secound - 5285
+bfs.tsx:24 Level - 17 , mili secound - 5582
+bfs.tsx:24 Level - 17 , mili secound - 5462
+bfs.tsx:24 Level - 17 , mili secound - 5756
+bfs.tsx:24 Level - 17 , mili secound - 5872
+bfs.tsx:24 Level - 17 , mili secound - 5835
+bfs.tsx:24 Level - 17 , mili secound - 6101
+bfs.tsx:24 Level - 17 , mili secound - 5083
+bfs.tsx:24 Level - 17 , mili secound - 6226
+bfs.tsx:24 Level - 17 , mili secound - 6424
+bfs.tsx:24 Level - 17 , mili secound - 6710
+bfs.tsx:24 Level - 17 , mili secound - 6643
+bfs.tsx:24 Level - 17 , mili secound - 6735
+bfs.tsx:24 Level - 17 , mili secound - 6893
+bfs.tsx:24 Level - 17 , mili secound - 6984
+bfs.tsx:24 Level - 17 , mili secound - 7455
+bfs.tsx:24 Level - 17 , mili secound - 7244
+bfs.tsx:24 Level - 17 , mili secound - 7370
+bfs.tsx:24 Level - 17 , mili secound - 7703
+bfs.tsx:24 Level - 17 , mili secound - 7556
+bfs.tsx:24 Level - 17 , mili secound - 7799
+bfs.tsx:24 Level - 17 , mili secound - 8103
+bfs.tsx:24 Level - 17 , mili secound - 7863
+bfs.tsx:24 Level - 17 , mili secound - 8032
+bfs.tsx:24 Level - 17 , mili secound - 8422
+bfs.tsx:24 Level - 17 , mili secound - 8470
+bfs.tsx:24 Level - 17 , mili secound - 8730
+bfs.tsx:24 Level - 17 , mili secound - 8496
+bfs.tsx:24 Level - 17 , mili secound - 8739
+bfs.tsx:24 Level - 17 , mili secound - 9136
+bfs.tsx:24 Level - 17 , mili secound - 9057
+bfs.tsx:24 Level - 17 , mili secound - 10425
+bfs.tsx:24 Level - 17 , mili secound - 10620
+bfs.tsx:24 Level - 18 , mili secound - 10774
+bfs.tsx:24 Level - 18 , mili secound - 10641
+bfs.tsx:24 Level - 18 , mili secound - 10502
+bfs.tsx:24 Level - 18 , mili secound - 10370
+bfs.tsx:24 Level - 18 , mili secound - 10159
+bfs.tsx:24 Level - 18 , mili secound - 9893
+bfs.tsx:24 Level - 18 , mili secound - 9756
+bfs.tsx:24 Level - 18 , mili secound - 9638
+bfs.tsx:24 Level - 18 , mili secound - 9504
+bfs.tsx:24 Level - 18 , mili secound - 9374
+bfs.tsx:24 Level - 18 , mili secound - 9246
+bfs.tsx:24 Level - 18 , mili secound - 9116
+bfs.tsx:24 Level - 18 , mili secound - 8999
+bfs.tsx:24 Level - 18 , mili secound - 8870
+bfs.tsx:24 Level - 18 , mili secound - 8749
+bfs.tsx:24 Level - 18 , mili secound - 8622
+bfs.tsx:24 Level - 18 , mili secound - 8500
+bfs.tsx:24 Level - 18 , mili secound - 8380
+bfs.tsx:24 Level - 18 , mili secound - 8253
+bfs.tsx:24 Level - 18 , mili secound - 8129
+bfs.tsx:24 Level - 18 , mili secound - 8011
+bfs.tsx:24 Level - 18 , mili secound - 7890
+bfs.tsx:24 Level - 18 , mili secound - 7769
+bfs.tsx:24 Level - 18 , mili secound - 7643
+bfs.tsx:24 Level - 18 , mili secound - 7536
+bfs.tsx:24 Level - 18 , mili secound - 7385
+bfs.tsx:24 Level - 18 , mili secound - 7242
+bfs.tsx:24 Level - 18 , mili secound - 7124
+bfs.tsx:24 Level - 18 , mili secound - 7009
+bfs.tsx:24 Level - 18 , mili secound - 6890
+bfs.tsx:24 Level - 18 , mili secound - 6783
+bfs.tsx:24 Level - 18 , mili secound - 6660
+bfs.tsx:24 Level - 18 , mili secound - 6544
+bfs.tsx:24 Level - 18 , mili secound - 6476
+bfs.tsx:24 Level - 18 , mili secound - 6329
+bfs.tsx:24 Level - 18 , mili secound - 6216
+bfs.tsx:24 Level - 18 , mili secound - 6108
+bfs.tsx:24 Level - 18 , mili secound - 5996
+bfs.tsx:24 Level - 18 , mili secound - 5888
+bfs.tsx:24 Level - 18 , mili secound - 5774
+bfs.tsx:24 Level - 18 , mili secound - 5662
+bfs.tsx:24 Level - 18 , mili secound - 5550
+bfs.tsx:24 Level - 18 , mili secound - 5444
+bfs.tsx:24 Level - 18 , mili secound - 5333
+bfs.tsx:24 Level - 18 , mili secound - 5225
+bfs.tsx:24 Level - 18 , mili secound - 5116
+bfs.tsx:24 Level - 18 , mili secound - 5009
+bfs.tsx:24 Level - 18 , mili secound - 4901
+bfs.tsx:24 Level - 18 , mili secound - 4792
+bfs.tsx:24 Level - 18 , mili secound - 4688
+bfs.tsx:24 Level - 18 , mili secound - 4578
+bfs.tsx:24 Level - 18 , mili secound - 4470
+bfs.tsx:24 Level - 18 , mili secound - 4364
+bfs.tsx:24 Level - 18 , mili secound - 3727
+bfs.tsx:24 Level - 18 , mili secound - 3549
+bfs.tsx:24 Level - 18 , mili secound - 3461
+bfs.tsx:24 Level - 18 , mili secound - 3366
+bfs.tsx:24 Level - 18 , mili secound - 3274
+bfs.tsx:24 Level - 18 , mili secound - 3265
+bfs.tsx:24 Level - 18 , mili secound - 3143
+bfs.tsx:24 Level - 18 , mili secound - 3077
+bfs.tsx:24 Level - 18 , mili secound - 2994
+bfs.tsx:24 Level - 18 , mili secound - 2906
+bfs.tsx:24 Level - 18 , mili secound - 2800
+bfs.tsx:24 Level - 18 , mili secound - 2935
+bfs.tsx:24 Level - 18 , mili secound - 2594
+bfs.tsx:24 Level - 18 , mili secound - 2462
+bfs.tsx:24 Level - 18 , mili secound - 2369
+bfs.tsx:24 Level - 18 , mili secound - 2276
+bfs.tsx:24 Level - 18 , mili secound - 2186
+bfs.tsx:24 Level - 18 , mili secound - 2096
+bfs.tsx:24 Level - 18 , mili secound - 2004
+bfs.tsx:24 Level - 18 , mili secound - 1944
+bfs.tsx:24 Level - 18 , mili secound - 1896
+bfs.tsx:24 Level - 18 , mili secound - 1998
+bfs.tsx:24 Level - 18 , mili secound - 1639
+bfs.tsx:24 Level - 18 , mili secound - 1547
+bfs.tsx:24 Level - 18 , mili secound - 1456
+bfs.tsx:24 Level - 18 , mili secound - 1367
+bfs.tsx:24 Level - 18 , mili secound - 1274
+bfs.tsx:24 Level - 18 , mili secound - 1183
+bfs.tsx:24 Level - 18 , mili secound - 1091
+bfs.tsx:24 Level - 18 , mili secound - 1000
+bfs.tsx:24 Level - 18 , mili secound - 911
+bfs.tsx:24 Level - 18 , mili secound - 818
+bfs.tsx:24 Level - 18 , mili secound - 727
+bfs.tsx:24 Level - 18 , mili secound - 636
+bfs.tsx:24 Level - 18 , mili secound - 545
+bfs.tsx:24 Level - 18 , mili secound - 453
+bfs.tsx:24 Level - 18 , mili secound - 366
+bfs.tsx:24 Level - 18 , mili secound - 276
+bfs.tsx:24 Level - 18 , mili secound - 188
+bfs.tsx:24 Level - 18 , mili secound - 100
