@@ -4,6 +4,9 @@ import { PriorityQueue } from "../models/priorityQueue";
 
 describe("Testing Priority Queue", () => {
   const aObj10 = new ABoardObj(new BoardObj("10******ABCD*** ", "ABCD"), 10);
+  const aObj10a = new ABoardObj(new BoardObj("10a*****ABCD*** ", "ABCD"), 10);
+  const aObj20 = new ABoardObj(new BoardObj("20******ABCD*** ", "ABCD"), 20);
+  const aObj5 = new ABoardObj(new BoardObj("5*******ABCD*** ", "ABCD"), 5);
   const queue = new PriorityQueue(aObj10);
 
   test("should be same object, and queue empty", () => {
@@ -11,24 +14,29 @@ describe("Testing Priority Queue", () => {
     expect(queue.isEmpty()).toBe(true);
   });
 
-  // test("should be level 1", () => {
-  //   copy.move(11);
-  //   copy.from = [];
-  //   result = bfs(copy);
-  //   expect(result.from.length).toBe(1);
-  // });
+  test("should be same object, and queue not empty", () => {
+    queue.enqueue(aObj10);
 
-  // test("should be level 2", () => {
-  //   copy.move(10);
-  //   copy.from = [];
-  //   result = bfs(copy);
-  //   expect(result.from.length).toBe(2);
-  // });
+    expect(aObj10).toBe(queue.items[0]);
+    expect(queue.isEmpty()).toBe(false);
+  });
 
-  // test("should be level 3", () => {
-  //   copy.move(14);
-  //   copy.from = [];
-  //   result = bfs(copy);
-  //   expect(result.from.length).toBe(3);
-  // });
+  test("same priority should be added at end", () => {
+    queue.enqueue(aObj10a);
+
+    expect(aObj10).toBe(queue.items[0]);
+    expect(aObj10a).toBe(queue.items[1]);
+  });
+
+  test("should be added at front", () => {
+    queue.enqueue(aObj20);
+
+    expect(aObj20).toBe(queue.items[0]);
+  });
+
+  test("should be added at end", () => {
+    queue.enqueue(aObj5);
+
+    expect(aObj5).toBe(queue.items[3]);
+  });
 });
