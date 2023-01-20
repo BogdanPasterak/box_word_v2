@@ -35,7 +35,7 @@ function App() {
       <div className="buttons" id="buttons">
         <button onClick={bfsStart}>BFS</button>
         <button onClick={dfsStart}>DFS</button>
-        <button onClick={aStart}>A star</button>
+        <button onClick={aStart}>A *</button>
       </div>
       <div className="info" id="info">
         info
