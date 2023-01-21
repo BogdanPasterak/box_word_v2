@@ -1,12 +1,34 @@
 import { ABoardObj } from "../models/aboard";
 import { BoardObj } from "../models/board";
 import { PriorityQueue } from "../models/priorityQueue";
-import { nextMoves, winTest, generateStub } from "./scripts";
+import { winTest, generateStub, nextMoves } from "./scripts";
+
+const aDist = "0000011101220123";
+const steps = [0, 1, 6, 11];
 
 export function a(obj: BoardObj): BoardObj {
   // starting element
   let current: BoardObj = obj.copy();
-  let queue: PriorityQueue = new PriorityQueue(new ABoardObj(current, 10));
+  // initial queue with starting object
+  let queue: PriorityQueue = new PriorityQueue(
+    new ABoardObj(current, estimation(current))
+  );
+  let now: ABoardObj;
+
+  while (!queue.isEmpty() && queue.items.length < 50) {
+    now = queue.dequeue();
+    console.log(`Now, queue size = ${queue.items.length}`);
+
+    console.log(now.toString());
+
+    // eslint-disable-next-line no-loop-func
+    nextMoves(now).forEach((p) => {
+      // console.log("moves", p);
+      now.move(p);
+      queue.enqueue(new ABoardObj(now, estimation(now)));
+      now.back();
+    });
+  }
 
   // let stack: BoardObj[];
   // let index = 0;
@@ -54,4 +76,19 @@ export function aStart() {
   if (winTest(obj)) console.log("=============  W  I  N  ================");
   else console.log("============== STOP ================");
   console.log(obj.toString());
+}
+
+function estimation(obj: BoardObj): number {
+  let sum = 0;
+  // h(x)
+  // first letter
+  let aPos = obj.board.indexOf(obj.word[0]);
+  sum += steps[Number(aDist[aPos])];
+
+  // curent steps number g(x)
+  sum += obj.from.length;
+
+  // console.log(sum);
+
+  return sum;
 }
