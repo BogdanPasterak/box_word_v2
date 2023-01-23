@@ -13,7 +13,7 @@ export function dfs(obj: BoardObj): BoardObj {
   let now = 0;
 
   // deeps level limit
-  for (let l = 0; l < 24; l++) {
+  for (let l = 0; l < 26; l++) {
     if (l > 15) console.log(`------- Level ${l} ---------`);
     steps.push({ index: l, stop: Date.now() });
 
@@ -31,7 +31,10 @@ export function dfs(obj: BoardObj): BoardObj {
         stack.push(current.copy().move(direction));
       });
     }
-    if (winTest(current)) break;
+    if (winTest(current)) {
+      console.log(Math.floor((Date.now() - start) / 1000) + " secounds");
+      break;
+    }
   }
   steps.map((e) => (e.stop = (e.stop - start) / 1000));
   // steps.map((e) => console.log(e));

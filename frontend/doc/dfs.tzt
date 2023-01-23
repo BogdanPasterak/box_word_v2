@@ -34,3 +34,48 @@ C * * *	space - 15
 {index: 20, stop: 21.147}
 {index: 21, stop: 46.185}
 {index: 22, stop: 100.969}
+
+==================================
+Difficult solutions found
+==================================
+
+============== START ================
+dfs.tsx:50 * * * B	word  - ABCD
+* * * D	space - 15
+* * * A	level - 0
+C * *  	from  - []
+dfs.tsx:17 ------- Level 16 ---------
+dfs.tsx:17 ------- Level 17 ---------
+dfs.tsx:17 ------- Level 18 ---------
+dfs.tsx:17 ------- Level 19 ---------
+dfs.tsx:17 ------- Level 20 ---------
+dfs.tsx:17 ------- Level 21 ---------
+dfs.tsx:17 ------- Level 22 ---------
+dfs.tsx:17 ------- Level 23 ---------
+dfs.tsx:35 215 secounds
+dfs.tsx:52 =============  W  I  N  ================
+dfs.tsx:54 * * A *	word  - ABCD
+* * B *	space - 9
+*   C *	level - 23
+* * D *	from  - [15,14,13,12,8,9,13,14,10,11,7,6,10,11,7,3,2,6,7,11,15,14,10]
+
+============== START ================
+dfs.tsx:50 D * * B	word  - ABCD
+* * * *	space - 15
+A * * C	level - 0
+* * *  	from  - []
+dfs.tsx:17 ------- Level 16 ---------
+dfs.tsx:17 ------- Level 17 ---------
+dfs.tsx:17 ------- Level 18 ---------
+dfs.tsx:17 ------- Level 19 ---------
+dfs.tsx:17 ------- Level 20 ---------
+dfs.tsx:17 ------- Level 21 ---------
+dfs.tsx:17 ------- Level 22 ---------
+dfs.tsx:17 ------- Level 23 ---------
+dfs.tsx:17 ------- Level 24 ---------
+dfs.tsx:35 678 secounds
+dfs.tsx:52 =============  W  I  N  ================
+dfs.tsx:54 * * * *	word  - ABCD
+A B C D	space - 10
+* *   *	level - 24
+* * * *	from  - [15,14,10,11,7,3,2,1,0,4,8,9,5,6,7,3,2,1,5,6,2,3,7,6]
