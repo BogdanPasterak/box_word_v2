@@ -45,7 +45,8 @@ export function dfs(obj: BoardObj): BoardObj {
 }
 
 export function dfsStart() {
-  let obj = generateStub();
+  // let obj = generateStub();
+  let obj = new BoardObj("D**B*******C**A ", "ABCD");
   console.log("============== START ================");
   console.log(obj.toString());
   obj = dfs(obj);
