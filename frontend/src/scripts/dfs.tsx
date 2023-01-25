@@ -92,21 +92,22 @@ export function dfsLevels(obj: BoardObj, level: number): BoardObj | null {
 }
 
 export function openFile() {
-  const level = 8;
+  const level = 14;
   console.log(`========= LEVEL ${level} ============`);
 
   const filename = `data_level_${level}.csv`;
   const type = "text/plain";
 
-  let data = "A,B,C,D,board start,board end,lvl,path";
+  let data = ["A,B,C,D,board start,board end,lvl,path"];
   let board = "";
   let set: BoardObj;
   let answer: BoardObj | null;
+  let count = 0;
 
   for (let a = 0; a < 15; a++) {
-    console.log(`a = ${a}`);
     for (let b = 0; b < 15; b++) {
       if (b === a) continue;
+      console.log(`a, b = ${a}, ${b}`);
       for (let c = 0; c < 15; c++) {
         if (c === a || c === b) continue;
         for (let d = 0; d < 15; d++) {
@@ -123,11 +124,14 @@ export function openFile() {
           set = new BoardObj(board, "ABCD");
           answer = dfsLevels(set, level);
           if (answer) {
-            console.log("--- set ---");
-            console.log(set.toString());
-            console.log(answer.toString());
-            data += `\n${a},${b},${c},${d},"${board}","${answer.board}"`;
-            data += `,${level},${answer.from.toString()}`;
+            count++;
+            // console.log("--- set ---");
+            // console.log(set.toString());
+            // console.log(answer.toString());
+            data.push(
+              `\n${a},${b},${c},${d},"${board}","${answer.board}"` +
+                `,${level},${answer.from.toString()}`
+            );
           }
           // if (a === 0 && b === 1 && c === 2 && d === 3) {
           //   data += `\n${a},${b},${c},${d},Bogdan`;
@@ -135,11 +139,12 @@ export function openFile() {
         }
       }
     }
+    console.log(`count = ${count}`);
   }
 
   // save to file
 
-  var file = new Blob([data], { type: type });
+  var file = new Blob(data, { type: type });
   //
   var a = document.createElement("a"),
     url = URL.createObjectURL(file);
