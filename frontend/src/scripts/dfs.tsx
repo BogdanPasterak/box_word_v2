@@ -92,7 +92,7 @@ export function dfsLevels(obj: BoardObj, level: number): BoardObj | null {
 }
 
 export function openFile() {
-  const level = 14;
+  const level = 15;
   console.log(`========= LEVEL ${level} ============`);
 
   const filename = `data_level_${level}.csv`;
@@ -104,7 +104,7 @@ export function openFile() {
   let answer: BoardObj | null;
   let count = 0;
 
-  for (let a = 0; a < 15; a++) {
+  for (let a = 12; a < 15; a++) {
     for (let b = 0; b < 15; b++) {
       if (b === a) continue;
       console.log(`a, b = ${a}, ${b}`);

@@ -5,8 +5,8 @@ window.onorientationchange = (e) => sizeFitting();
 
 function sizeFitting() {
   // Wait for html elements
-  while (document.querySelectorAll(".box").length < 16)
-    setTimeout(function () {}, 50);
+  // while (document.querySelectorAll(".box").length < 16)
+  //   setTimeout(function () {}, 50);
 
   // div with 1% of view border (css setting size)
   let div_in = document.getElementById("div-in");
