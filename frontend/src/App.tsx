@@ -16,7 +16,7 @@ import m23 from "./image/m23.png";
 import m24 from "./image/m24.png";
 import { print, generateStub } from "./scripts/scripts";
 import { bfsStart } from "./scripts/bfs";
-import { dfsStart, openFile } from "./scripts/dfs";
+import { dfsStart, openFile, openFile2 } from "./scripts/dfs";
 import { aStart } from "./scripts/astar";
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
         <button onClick={bfsStart}>BFS</button>
         <button onClick={dfsStart}>DFS</button>
         <button onClick={aStart}>A *</button>
-        <button onClick={openFile}>Save data</button>
+        <button onClick={openFile2}>Save data</button>
       </div>
       <div className="info" id="info">
         info
