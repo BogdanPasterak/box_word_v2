@@ -96,7 +96,7 @@ export function dfsLevels(obj: BoardObj, level: number): BoardObj | null {
 // checked 12264, unchecked 23226
 export function openFile2() {
   // level 15 in 5 steps, together 10 hours
-  const level = 15;
+  const level = 16;
   console.log(`========= LEVEL ${level} ============`);
 
   const filename = `data_level_${level}.csv`;
@@ -110,7 +110,7 @@ export function openFile2() {
   // array with used sets
   const setsUsed = arr.sort();
 
-  for (let a = 0; a < 15; a++) {
+  for (let a = 14; a < 15; a++) {
     for (let b = 0; b < 15; b++) {
       if (b === a) continue;
       console.log(`a, b = ${a}, ${b}`);
@@ -127,19 +127,20 @@ export function openFile2() {
             else board += "*";
           }
           board += " ";
-          if (!setsUsed.includes(board)) count++;
-          // set = new BoardObj(board, "ABCD");
-          // answer = dfsLevels(set, level);
-          // if (answer) {
-          //   count++;
-          //   // console.log("--- set ---");
-          //   // console.log(set.toString());
-          //   // console.log(answer.toString());
-          //   data.push(
-          //     `\n${a},${b},${c},${d},"${board}","${answer.board}"` +
-          //       `,${level},${answer.from.toString()}`
-          //   );
-          // }
+          if (!setsUsed.includes(board)) {
+            set = new BoardObj(board, "ABCD");
+            answer = dfsLevels(set, level);
+            if (answer) {
+              count++;
+              // console.log("--- set ---");
+              // console.log(set.toString());
+              // console.log(answer.toString());
+              data.push(
+                `\n${a},${b},${c},${d},"${board}","${answer.board}"` +
+                  `,${level},${answer.from.toString()}`
+              );
+            }
+          }
           // if (a === 0 && b === 1 && c === 2 && d === 3) {
           //   data += `\n${a},${b},${c},${d},Bogdan`;
           // }
