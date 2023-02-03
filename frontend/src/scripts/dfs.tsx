@@ -1,6 +1,7 @@
 import { BoardObj } from "../models/board";
 import { nextMoves, winTest, generateStub } from "./scripts";
 import { arr } from "./arr_0_16";
+import { arr17 } from "./arr_17";
 
 export function dfs(obj: BoardObj): BoardObj {
   // starting element
@@ -96,7 +97,7 @@ export function dfsLevels(obj: BoardObj, level: number): BoardObj | null {
 // checked 12264, unchecked 23226
 export function openFile2() {
   // level 15 in 5 steps, together 10 hours
-  const level = 17;
+  const level = 18;
   console.log(`========= LEVEL ${level} ============`);
 
   const filename = `data_level_${level}.csv`;
@@ -108,9 +109,10 @@ export function openFile2() {
   let answer: BoardObj | null;
   let count = 0;
   // array with used sets
-  const setsUsed = arr.sort();
+  const setsUsed = arr.concat(arr17).sort();
+  console.log("used =", setsUsed.length);
 
-  for (let a = 12; a < 15; a++) {
+  for (let a = 0; a < 6; a++) {
     for (let b = 0; b < 15; b++) {
       if (b === a) continue;
       console.log(`a, b = ${a}, ${b}`);
