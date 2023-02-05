@@ -7,12 +7,12 @@ export function dfs(obj: BoardObj): BoardObj {
   // starting element
   let current: BoardObj = obj.copy();
   let stack: BoardObj[];
-  let index = 0;
+  // let index = 0;
   let steps = [];
-  let count = 0;
+  // let count = 0;
   let start = Date.now();
-  let temp = 0;
-  let now = 0;
+  // let temp = 0;
+  // let now = 0;
 
   // deeps level limit
   for (let l = 0; l < 26; l++) {
@@ -108,15 +108,20 @@ export function openFile2() {
   let set: BoardObj;
   let answer: BoardObj | null;
   let count = 0;
+  let start = Date.now();
+
   // array with used sets
   const setsUsed = arr.concat(arr17).sort();
   console.log("used =", setsUsed.length);
 
-  for (let a = 0; a < 6; a++) {
+  for (let a = 12; a < 15; a++) {
     for (let b = 0; b < 15; b++) {
       if (b === a) continue;
       console.log(`a, b = ${a}, ${b}`);
       for (let c = 0; c < 15; c++) {
+        console.log(
+          `c = ${c}, time = ${Math.floor((Date.now() - start) / 1000)}`
+        );
         if (c === a || c === b) continue;
         for (let d = 0; d < 15; d++) {
           if (d === a || d === b || c === b) continue;
