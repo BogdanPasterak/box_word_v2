@@ -2,6 +2,7 @@ import { BoardObj } from "../models/board";
 import { nextMoves, winTest, generateStub } from "./scripts";
 import { arr } from "./arr_0_16";
 import { arr17 } from "./arr_17";
+import { arr18 } from "./arr_18";
 
 export function dfs(obj: BoardObj): BoardObj {
   // starting element
@@ -97,7 +98,7 @@ export function dfsLevels(obj: BoardObj, level: number): BoardObj | null {
 // checked 12264, unchecked 23226
 export function openFile2() {
   // level 15 in 5 steps, together 10 hours
-  const level = 18;
+  const level = 19;
   console.log(`========= LEVEL ${level} ============`);
 
   const filename = `data_level_${level}.csv`;
@@ -108,20 +109,19 @@ export function openFile2() {
   let set: BoardObj;
   let answer: BoardObj | null;
   let count = 0;
+  let now: number;
   let start = Date.now();
 
   // array with used sets
-  const setsUsed = arr.concat(arr17).sort();
+  const setsUsed = arr.concat(arr17).concat(arr18).sort();
   console.log("used =", setsUsed.length);
 
-  for (let a = 12; a < 15; a++) {
+  for (let a = 0; a < 2; a++) {
     for (let b = 0; b < 15; b++) {
       if (b === a) continue;
-      console.log(`a, b = ${a}, ${b}`);
+      now = Math.floor((Date.now() - start) / 1000);
+      console.log(`a, b = ${a}, ${b}, time = ${now}`);
       for (let c = 0; c < 15; c++) {
-        console.log(
-          `c = ${c}, time = ${Math.floor((Date.now() - start) / 1000)}`
-        );
         if (c === a || c === b) continue;
         for (let d = 0; d < 15; d++) {
           if (d === a || d === b || c === b) continue;
