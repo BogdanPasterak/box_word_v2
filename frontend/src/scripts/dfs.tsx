@@ -116,11 +116,11 @@ export function openFile2() {
   const setsUsed = arr.concat(arr17).concat(arr18).sort();
   console.log("used =", setsUsed.length);
 
-  for (let a = 0; a < 2; a++) {
+  for (let a = 5; a < 8; a++) {
     for (let b = 0; b < 15; b++) {
       if (b === a) continue;
-      now = Math.floor((Date.now() - start) / 1000);
-      console.log(`a, b = ${a}, ${b}, time = ${now}`);
+      now = Math.floor((Date.now() - start) / 60000);
+      console.log(`a, b = ${a}, ${b}, time = ${now} min`);
       for (let c = 0; c < 15; c++) {
         if (c === a || c === b) continue;
         for (let d = 0; d < 15; d++) {
