@@ -116,7 +116,7 @@ export function openFile2() {
   const setsUsed = arr.concat(arr17).concat(arr18).sort();
   console.log("used =", setsUsed.length);
 
-  for (let a = 8; a < 11; a++) {
+  for (let a = 13; a < 15; a++) {
     for (let b = 0; b < 15; b++) {
       if (b === a) continue;
       now = Math.floor((Date.now() - start) / 60000);
