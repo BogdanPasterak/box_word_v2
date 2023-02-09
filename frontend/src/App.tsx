@@ -21,6 +21,7 @@ import { aStart } from "./scripts/astar";
 
 function App() {
   let result = generateStub();
+  let welcome = "Welcome";
   // console.log("-" + result + "-");
 
   return (
@@ -30,7 +31,8 @@ function App() {
       style={{ backgroundImage: `url(${bg})` }}
     >
       <div className="title" id="title">
-        title
+        <h1>BOX WORD</h1>
+        <p className="welcome">{welcome}</p>
       </div>
       <div className="buttons" id="buttons">
         <button onClick={bfsStart}>BFS</button>
@@ -88,11 +90,15 @@ function App() {
           <img src={m24} alt="" />
         </div>
         <div className="box" id="m25" onClick={() => print("25")}>
-          <img src={m10} alt="" />
+          {/* <img src={m10} alt="" /> */}
         </div>
       </div>
       <div className="footer" id="footer">
-        footer
+        <span>
+          <a href="https://github.com/BogdanPasterak" target="_blank">
+            GitHub <i className="fab fa-github"></i>
+          </a>
+        </span>
       </div>
     </div>
   );
