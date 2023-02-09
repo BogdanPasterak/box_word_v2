@@ -116,11 +116,11 @@ export function openFile2() {
   const setsUsed = arr.concat(arr17).concat(arr18).sort();
   console.log("used =", setsUsed.length);
 
-  for (let a = 13; a < 15; a++) {
+  for (let a = 14; a < 15; a++) {
     for (let b = 0; b < 15; b++) {
       if (b === a) continue;
       now = Math.floor((Date.now() - start) / 60000);
-      console.log(`a, b = ${a}, ${b}, time = ${now} min`);
+      console.log(`a, b = ${a}, ${b}, time = ${now} min , count = ${count}`);
       for (let c = 0; c < 15; c++) {
         if (c === a || c === b) continue;
         for (let d = 0; d < 15; d++) {
@@ -154,7 +154,7 @@ export function openFile2() {
         }
       }
     }
-    console.log(`count = ${count}`);
+    // console.log(`count = ${count}`);
   }
 
   // save to file
