@@ -1,5 +1,5 @@
 import { BoardObj } from "../models/board";
-import { nextMoves, winTest, generateStub } from "./scripts";
+import { nextMoves, winTest } from "./scripts";
 import { arr } from "./arr_0_16";
 import { arr17 } from "./arr_17";
 import { arr18 } from "./arr_18";
@@ -120,8 +120,8 @@ export function openFile2() {
   console.log("used =", setsUsed.length);
 
   for (let a = 0; a < 1; a++) {
-    checked = find = 0;
     for (let b = 0; b < 15; b++) {
+      checked = find = 0;
       if (b === a) continue;
       for (let c = 0; c < 15; c++) {
         if (c === a || c === b) continue;
@@ -148,16 +148,13 @@ export function openFile2() {
                   `,${level},${answer.from.toString()}`
               );
             }
-            now = Math.floor((Date.now() - start) / 60000);
-            console.log(
-              `a, b = ${a}, ${b}, time = ${now} min , checked = ${checked} , find = ${find}`
-            );
           }
-          // if (a === 0 && b === 1 && c === 2 && d === 3) {
-          //   data += `\n${a},${b},${c},${d},Bogdan`;
-          // }
         }
       }
+      now = Math.floor((Date.now() - start) / 60000);
+      console.log(
+        `a,b = ${a}, ${b}, time = ${now}, from = ${checked}, find = ${find}`
+      );
     }
     console.log(`a = ${a} , count = ${count}`);
   }
