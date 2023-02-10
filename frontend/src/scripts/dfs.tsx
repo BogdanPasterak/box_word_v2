@@ -3,6 +3,7 @@ import { nextMoves, winTest, generateStub } from "./scripts";
 import { arr } from "./arr_0_16";
 import { arr17 } from "./arr_17";
 import { arr18 } from "./arr_18";
+import { arr19 } from "./arr_19";
 
 export function dfs(obj: BoardObj): BoardObj {
   // starting element
@@ -98,7 +99,7 @@ export function dfsLevels(obj: BoardObj, level: number): BoardObj | null {
 // checked 12264, unchecked 23226
 export function openFile2() {
   // level 15 in 5 steps, together 10 hours
-  const level = 19;
+  const level = 20;
   console.log(`========= LEVEL ${level} ============`);
 
   const filename = `data_level_${level}.csv`;
@@ -109,18 +110,19 @@ export function openFile2() {
   let set: BoardObj;
   let answer: BoardObj | null;
   let count = 0;
+  let checked = 0;
+  let find = 0;
   let now: number;
   let start = Date.now();
 
   // array with used sets
-  const setsUsed = arr.concat(arr17).concat(arr18).sort();
+  const setsUsed = arr.concat(arr17).concat(arr18).concat(arr19).sort();
   console.log("used =", setsUsed.length);
 
-  for (let a = 14; a < 15; a++) {
+  for (let a = 0; a < 1; a++) {
+    checked = find = 0;
     for (let b = 0; b < 15; b++) {
       if (b === a) continue;
-      now = Math.floor((Date.now() - start) / 60000);
-      console.log(`a, b = ${a}, ${b}, time = ${now} min , count = ${count}`);
       for (let c = 0; c < 15; c++) {
         if (c === a || c === b) continue;
         for (let d = 0; d < 15; d++) {
@@ -135,18 +137,21 @@ export function openFile2() {
           }
           board += " ";
           if (!setsUsed.includes(board)) {
+            checked++;
             set = new BoardObj(board, "ABCD");
             answer = dfsLevels(set, level);
             if (answer) {
               count++;
-              // console.log("--- set ---");
-              // console.log(set.toString());
-              // console.log(answer.toString());
+              find++;
               data.push(
                 `\n${a},${b},${c},${d},"${board}","${answer.board}"` +
                   `,${level},${answer.from.toString()}`
               );
             }
+            now = Math.floor((Date.now() - start) / 60000);
+            console.log(
+              `a, b = ${a}, ${b}, time = ${now} min , checked = ${checked} , find = ${find}`
+            );
           }
           // if (a === 0 && b === 1 && c === 2 && d === 3) {
           //   data += `\n${a},${b},${c},${d},Bogdan`;
@@ -154,7 +159,7 @@ export function openFile2() {
         }
       }
     }
-    // console.log(`count = ${count}`);
+    console.log(`a = ${a} , count = ${count}`);
   }
 
   // save to file
