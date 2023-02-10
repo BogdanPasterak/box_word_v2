@@ -94,11 +94,42 @@ function App() {
         </div>
       </div>
       <div className="footer" id="footer">
-        <span>
-          <a href="https://github.com/BogdanPasterak" target="_blank">
-            GitHub <i className="fab fa-github"></i>
-          </a>
-        </span>
+        <p>
+          <span>
+            <a href="mailto:bogdanpasterak@gmail.com">Bogdan&nbsp;Pasterak</a>
+          </span>
+          <span>&copy;</span>
+          <span>2023</span>
+        </p>
+        <p>
+          <span>
+            <a
+              href="https://github.com/BogdanPasterak"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub&nbsp;<i className="fab fa-github"></i>
+            </a>
+          </span>
+          <span>
+            <a
+              href="https://www.linkedin.com/in/bogdan-pasterak-54b0b514a/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Linked&nbsp;<i className="fab fa-linkedin-in"></i>
+            </a>
+          </span>
+          <span>
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Facebook&nbsp;<i className="fab fa-facebook-f"></i>
+            </a>
+          </span>
+        </p>
       </div>
     </div>
   );
