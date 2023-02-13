@@ -1,5 +1,5 @@
 import { BoardObj } from "../models/board";
-import { nextMoves, winTest } from "./scripts";
+import { generateStub, nextMoves, winTest } from "./scripts";
 import { arr } from "./arr_0_16";
 import { arr17 } from "./arr_17";
 import { arr18 } from "./arr_18";
@@ -13,12 +13,16 @@ export function dfs(obj: BoardObj): BoardObj {
   let steps = [];
   // let count = 0;
   let start = Date.now();
-  // let temp = 0;
-  // let now = 0;
+  let temp = 0;
+  let now = 0;
 
   // deeps level limit
   for (let l = 0; l < 26; l++) {
-    if (l > 15) console.log(`------- Level ${l} ---------`);
+    if (l > 12) {
+      now = Date.now() - start;
+      console.log(`Level - ${l} , mili secound - ${now - temp}`);
+      temp = now;
+    }
     steps.push({ index: l, stop: Date.now() });
 
     stack = [obj.copy()];
@@ -49,8 +53,10 @@ export function dfs(obj: BoardObj): BoardObj {
 }
 
 export function dfsStart() {
-  // let obj = generateStub();
-  let obj = new BoardObj("D**B*******C**A ", "ABCD");
+  let obj = generateStub();
+  obj.board = "**D*******C**BA ";
+
+  // let obj = new BoardObj("D**B*******C**A ", "ABCD");
   console.log("============== START ================");
   console.log(obj.toString());
   obj = dfs(obj);
