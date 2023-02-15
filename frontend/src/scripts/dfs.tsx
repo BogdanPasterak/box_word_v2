@@ -119,7 +119,7 @@ export function openFile2() {
   const setsUsed = arr.concat(arr17).concat(arr18).concat(arr19).sort();
   console.log("used =", setsUsed.length);
 
-  for (let a = 11; a < 12; a++) {
+  for (let a = 14; a < 15; a++) {
     for (let b = 0; b < 15; b++) {
       checked = find = 0;
       if (b === a) continue;
