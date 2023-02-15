@@ -21,7 +21,7 @@ export function a(obj: BoardObj): BoardObj {
 
   while (!queue.isEmpty()) {
     now = queue.dequeue();
-    if (++count > 5000) {
+    if (++count > 20000) {
       console.log("========== BREAK ===========");
       current = now;
       break;
@@ -44,6 +44,8 @@ export function a(obj: BoardObj): BoardObj {
 
 export function aStart() {
   let obj = generateStub();
+  obj.board = "**D*******C**BA ";
+
   console.log("============== START ================");
   console.log(obj.toString());
 

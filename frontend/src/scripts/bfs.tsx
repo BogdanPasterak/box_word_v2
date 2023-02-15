@@ -53,6 +53,7 @@ export function bfsStart() {
   // obj.pos = 11;
   // bfs(obj);
   let obj = generateStub();
+  obj.board = "**D*******C**BA ";
   console.log("============== START ================");
 
   console.log(obj.toString());

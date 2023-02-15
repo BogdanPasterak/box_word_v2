@@ -45,6 +45,20 @@ body {
 
 .footer {
   background-color: antiquewhite;
+  text-align: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  font-size: 0.8em;
+}
+
+.footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer span {
+  padding: 0 10px;
 }
 
 .box {
@@ -58,4 +72,11 @@ body {
 
 .welcome {
   display: inline-block;
+}
+
+/* breakpoints */
+@media screen and (max-width: 500px), (max-height: 400px) {
+  body {
+    font-size: 0.9em;
+  }
 }
