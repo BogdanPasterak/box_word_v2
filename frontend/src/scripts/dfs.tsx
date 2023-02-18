@@ -4,6 +4,7 @@ import { arr } from "./arr_0_16";
 import { arr17 } from "./arr_17";
 import { arr18 } from "./arr_18";
 import { arr19 } from "./arr_19";
+import { arr20 } from "./arr_20";
 
 export function dfs(obj: BoardObj): BoardObj {
   // starting element
@@ -105,10 +106,30 @@ export function dfsLevels(obj: BoardObj, level: number): BoardObj | null {
 // checked 12264, unchecked 23226
 export function openFile2() {
   // level 15 in 5 steps, together 10 hours
-  const level = 20;
-  console.log(`========= LEVEL ${level} ============`);
+  const level = 21;
+  // console.log(`========= LEVEL ${level} ============`);
+  const index = 7;
+  const allParts = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+  ];
+  // const part = allParts[index];
+  console.log(`========= LEVEL ${level} up ${allParts[index]} ============`);
 
-  const filename = `data_level_${level}.csv`;
+  const filename = `data_level_${level}_${allParts[index]}.csv`;
   const type = "text/plain";
 
   let data = ["A,B,C,D,board start,board end,lvl,path"];
@@ -122,10 +143,15 @@ export function openFile2() {
   let start = Date.now();
 
   // array with used sets
-  const setsUsed = arr.concat(arr17).concat(arr18).concat(arr19).sort();
+  const setsUsed = arr
+    .concat(arr17)
+    .concat(arr18)
+    .concat(arr19)
+    .concat(arr20)
+    .sort();
   console.log("used =", setsUsed.length);
 
-  for (let a = 14; a < 15; a++) {
+  for (let a = index; a < index + 1; a++) {
     for (let b = 0; b < 15; b++) {
       checked = find = 0;
       if (b === a) continue;
@@ -151,8 +177,10 @@ export function openFile2() {
               find++;
               data.push(
                 `\n${a},${b},${c},${d},"${board}","${answer.board}"` +
-                  `,${level},${answer.from.toString()}`
+                  `,${answer.from.length},${answer.from.toString()}`
               );
+              // } else {
+              //   console.log("OVER 27");
             }
           }
         }
