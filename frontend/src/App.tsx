@@ -41,7 +41,9 @@ function App() {
         <button onClick={openFile2}>Save data</button>
       </div>
       <div className="info" id="info">
-        info
+        <span>Time 23:15</span>
+        <h2 className="word">W O R D</h2>
+        <span>Moves - 27</span>
       </div>
       <div className="board" id="board">
         <div className="box" id="m10" onClick={() => print("10")}>
@@ -98,7 +100,7 @@ function App() {
           <span>
             <a href="mailto:bogdanpasterak@gmail.com">Bogdan&nbsp;Pasterak</a>
           </span>
-          <span>&copy;</span>
+          &copy;
           <span>2023</span>
         </p>
         <p>
