@@ -32,19 +32,26 @@ body {
 }
 
 .info {
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
+  text-align: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.word {
 }
 
 .board {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
   background-color: azure;
 }
 
 .footer {
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   text-align: center;
   display: flex;
   flex-flow: row;
@@ -58,7 +65,7 @@ body {
 }
 
 .footer span {
-  padding: 0 10px;
+  padding: 0 5px;
 }
 
 .box {
@@ -75,7 +82,7 @@ body {
 }
 
 /* breakpoints */
-@media screen and (max-width: 500px), (max-height: 400px) {
+@media screen and (max-width: 530px), (max-height: 400px) {
   body {
     font-size: 0.9em;
   }
