@@ -75,31 +75,35 @@ export function dfsLevels(obj: BoardObj, level: number): BoardObj | null {
   // console.log(obj.toString());
 
   // deeps level limit
-  for (let l = 0; l <= level; l++) {
-    // if (l > 15) console.log(`------- Level ${l} ---------`);
-    // steps.push({ index: l, stop: Date.now() });
+  // search for exacly level
+  // for (let l = 0; l <= level; l++) {
+  // if (l > 15) console.log(`------- Level ${l} ---------`);
+  // steps.push({ index: l, stop: Date.now() });
 
-    stack = [obj.copy()];
-    while (stack.length) {
-      // log for show work
-      // if (!(++count % 5000000)) console.log(Date.now() - start);
-      current = stack.pop()!;
-      // if over deeps
-      if (current.from.length > l) continue;
-      // if on deep test off win (before was detected in previose one loop)
-      if (current.from.length < level && winTest(current)) return null;
-      if (current.from.length === level && winTest(current)) return current;
+  stack = [obj.copy()];
+  while (stack.length) {
+    // log for show work
+    // if (!(++count % 5000000)) console.log(Date.now() - start);
+    current = stack.pop()!;
+    // if over deeps
+    // if (current.from.length > l) continue;
+    // if on deep test off win (before was detected in previose one loop)
+    if (current.from.length === level) {
+      if (winTest(current)) return current;
+    } else {
       // eslint-disable-next-line no-loop-func
       nextMoves(current).forEach((direction) => {
         stack.push(current.copy().move(direction));
       });
     }
   }
+  return null;
+  // }
 
   // if (winTest(obj)) console.log("=============  W  I  N  ================");
   // else console.log("============== STOP ================");
   // console.log(obj.toString());
-  return null;
+  // return null;
 }
 
 // for levels over 15
@@ -108,7 +112,7 @@ export function openFile2() {
   // level 15 in 5 steps, together 10 hours
   const level = 21;
   // console.log(`========= LEVEL ${level} ============`);
-  const index = 7;
+  const index = 12;
   const allParts = [
     "a",
     "b",
