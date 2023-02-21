@@ -9,7 +9,6 @@ export function bfs(obj: BoardObj): BoardObj {
   let index = 0;
   let steps = [];
   let count = 0;
-  let start = Date.now();
   let temp = 0;
   let now = 0;
 
@@ -19,11 +18,11 @@ export function bfs(obj: BoardObj): BoardObj {
       index++;
     }
     count++;
-    if (!(count % 10000)) {
-      now = Date.now() - start;
-      console.log(`Level - ${index} , mili secound - ${now - temp}`);
-      temp = now;
-    }
+    // if (!(count % 10000)) {
+    //   now = Date.now() - start;
+    //   console.log(`Level - ${index} , mili secound - ${now - temp}`);
+    //   temp = now;
+    // }
 
     current = list.shift()!;
 
@@ -38,9 +37,9 @@ export function bfs(obj: BoardObj): BoardObj {
       });
     }
   }
-  console.log(`--- BFS --- save work --- count - ${count}`);
-  steps.map((e) => (e.stop = (e.stop - start) / 1000));
-  console.log(steps);
+  // console.log(`--- BFS --- save work --- count - ${count}`);
+  // steps.map((e) => (e.stop = (e.stop - start) / 1000));
+  // console.log(steps);
 
   return current;
 }
@@ -55,7 +54,12 @@ export function bfsStart() {
   let obj = generateStub();
   obj.board = "**D*******C**BA ";
   console.log("============== START ================");
-
   console.log(obj.toString());
-  console.log(bfs(obj).toString());
+  let start = Date.now();
+
+  obj = bfs(obj);
+
+  console.log(`time = ${Date.now() - start} ms`);
+  console.log("============== STOP ================");
+  console.log(obj.toString());
 }
