@@ -20,13 +20,10 @@ PriorityQueue.prototype.enqueue = function (item: ABoardObj) {
   let size = this.items.length - 1;
   // experimental queue reduction
   let el: ABoardObj;
-  if (this.items.length && this.items[0].rating > 18) {
+  if (this.items.length && this.items[0].rating > 50) {
     el = this.items.shift()!;
     console.log(
-      "delete rating = ",
-      el.toString(),
-      ", size = ",
-      this.items.length
+      `delete rating = ${el.toString()}, size = ${this.items.length}`
     );
     size--;
   }

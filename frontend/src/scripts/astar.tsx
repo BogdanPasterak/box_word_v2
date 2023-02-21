@@ -9,6 +9,7 @@ const cDist = "2101110100001101";
 const dDist = "3210221011100000";
 const steps = [0, 1, 6, 11];
 
+// A * algorythm
 export function a(obj: BoardObj): BoardObj {
   // starting element
   let current: BoardObj = obj.copy();
@@ -21,12 +22,17 @@ export function a(obj: BoardObj): BoardObj {
 
   while (!queue.isEmpty()) {
     now = queue.dequeue();
-    if (++count > 20000) {
+    // win
+    if (winTest(now)) return now;
+    if (++count > 200000) {
       console.log("========== BREAK ===========");
       current = now;
       break;
     }
-    // console.log(`--- Now, queue size = ${queue.items.length}`);
+
+    // console.log(
+    //   `--- Now, queue size = ${queue.items.length}, count = ${count}`
+    // );
 
     // console.log(now.toString());
 
@@ -45,13 +51,15 @@ export function a(obj: BoardObj): BoardObj {
 export function aStart() {
   let obj = generateStub();
   obj.board = "**D*******C**BA ";
+  // obj.board = "*C***D**B*****A "; // 19
 
   console.log("============== START ================");
   console.log(obj.toString());
+  let start = Date.now();
 
   obj = a(obj);
-  if (winTest(obj)) console.log("=============  W  I  N  ================");
-  else console.log("============== STOP ================");
+  console.log(`time = ${Date.now() - start} ms`);
+  console.log("============== STOP ================");
   console.log(obj.toString());
 }
 
