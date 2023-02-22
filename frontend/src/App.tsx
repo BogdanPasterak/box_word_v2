@@ -16,28 +16,29 @@ import m23 from "./image/m23.png";
 import m24 from "./image/m24.png";
 import { generateStub } from "./scripts/scripts";
 import { bfsStart } from "./scripts/bfs";
-import { dfsStart, openFile, openFile2 } from "./scripts/dfs";
+import { dfsStart, openFile2 } from "./scripts/dfs";
 import { aStart } from "./scripts/astar";
 import { BoardObj } from "./models/board";
 
 function App() {
   let welcome = "Welcome";
+  let obj: BoardObj = generateStub();
   // console.log("-" + result + "-");
 
   function setLetters() {
-    let obj: BoardObj = generateStub();
-    console.log(obj.toString());
-    // let box = document.getElementById("m10");
+    // console.log(obj.toString());
 
-    // box!.textContent = "A";
     let boxes = document.querySelectorAll(".box");
+
     boxes.forEach((box, index) => {
       box!.textContent = obj.board[index];
     });
   }
 
   function handleClick(event: any): void {
-    console.log(event.target.textContent);
+    // convert id to index
+    let index = parseInt(event.target.id.slice(1)) - 10;
+    console.log(index);
   }
 
   return (
