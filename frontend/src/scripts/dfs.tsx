@@ -113,30 +113,14 @@ export function dfsLevels(obj: BoardObj, level: number): BoardObj | null {
 // checked 12264, unchecked 23226
 export function openFile2() {
   // level 15 in 5 steps, together 10 hours
-  const level = 21;
+  const level = 22;
   // console.log(`========= LEVEL ${level} ============`);
-  const index = 12;
-  const allParts = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-  ];
-  // const part = allParts[index];
-  console.log(`========= LEVEL ${level} up ${allParts[index]} ============`);
+  // const index = 12;
 
-  const filename = `data_level_${level}_${allParts[index]}.csv`;
+  // const part = allParts[index];
+  console.log(`========= LEVEL ${level} a ============`);
+
+  const filename = `data_level_${level}_a.csv`;
   const type = "text/plain";
 
   let data = ["A,B,C,D,board start,board end,lvl,path"];
@@ -158,7 +142,7 @@ export function openFile2() {
     .sort();
   console.log("used =", setsUsed.length);
 
-  for (let a = index; a < index + 1; a++) {
+  for (let a = 0; a < 1; a++) {
     for (let b = 0; b < 15; b++) {
       checked = find = 0;
       if (b === a) continue;
