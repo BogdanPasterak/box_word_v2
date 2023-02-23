@@ -116,12 +116,13 @@ export function openFile2() {
   // level 15 in 5 steps, together 10 hours
   const level = 22;
   // console.log(`========= LEVEL ${level} ============`);
-  // const index = 12;
+  const abc = "abcdefghijklmno";
+  const index = 6;
 
   // const part = allParts[index];
-  console.log(`========= LEVEL ${level} a ============`);
+  console.log(`========= LEVEL ${level} ${abc[index]} ============`);
 
-  const filename = `data_level_${level}_a.csv`;
+  const filename = `data_level_${level}_${abc[index]}.csv`;
   const type = "text/plain";
 
   let data = ["A,B,C,D,board start,board end,lvl,path"];
@@ -144,7 +145,7 @@ export function openFile2() {
     .sort();
   console.log("used =", setsUsed.length);
 
-  for (let a = 0; a < 1; a++) {
+  for (let a = index; a <= index; a++) {
     for (let b = 0; b < 15; b++) {
       checked = find = 0;
       if (b === a) continue;
