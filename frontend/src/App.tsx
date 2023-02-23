@@ -6,6 +6,7 @@ import { dfsStart, openFile2 } from "./scripts/dfs";
 import { aStart } from "./scripts/astar";
 import { BoardObj } from "./models/board";
 import { useState } from "react";
+import Box from "./components/Box";
 
 function App() {
   // starting seting
@@ -143,12 +144,13 @@ function App() {
           onClick={(event) => handleClick(event)}
           style={{ backgroundImage: `url(${images.m23})` }}
         ></div>
-        <div
+        {/* <div
           className="box"
           id="m24"
           onClick={(event) => handleClick(event)}
           style={{ backgroundImage: `url(${images.m24})` }}
-        ></div>
+        ></div> */}
+        <Box id="m24" imgUrl={images.m24} letter={obj.board[0]}></Box>
         <div className="box" id="m25"></div>
       </div>
       <div className="footer" id="footer">
