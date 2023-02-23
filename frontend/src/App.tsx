@@ -13,19 +13,13 @@ function App() {
   const [obj, updateObj] = useState(generateStub());
   const [welcome, setWelcome] = useState("Welcome");
 
-  function setLetters(o: BoardObj) {
-    let boxes = document.querySelectorAll(".box");
-
-    boxes.forEach((box, index) => {
-      box!.textContent = obj.board[index];
-    });
-  }
-
-  function handleClick(event: any): void {
+  function handleClick(id: string): void {
     // convert id to index
-    let index = parseInt(event.target.id.slice(1)) - 10;
-    console.log(index);
+    // let index = parseInt(event.target.id.slice(1)) - 10;
+    console.log(id);
   }
+
+  const img = Object.values(images);
 
   return (
     <div
@@ -50,107 +44,16 @@ function App() {
         <span>Moves - 27</span>
       </div>
       <div className="board" id="board">
-        <div
-          className="box"
-          id="m10"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m10})` }}
-        >
-          {obj.board[0]}
-        </div>
-        <div
-          className="box"
-          id="m11"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m11})` }}
-        >
-          {obj.board[1]}
-        </div>
-        <div
-          className="box"
-          id="m12"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m12})` }}
-        >
-          {obj.board[2]}
-        </div>
-        <div
-          className="box"
-          id="m13"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m13})` }}
-        >
-          {obj.board[3]}
-        </div>
-        <div
-          className="box"
-          id="m14"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m14})` }}
-        >
-          {obj.board[4]}
-        </div>
-        <div
-          className="box"
-          id="m15"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m15})` }}
-        ></div>
-        <div
-          className="box"
-          id="m16"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m16})` }}
-        ></div>
-        <div
-          className="box"
-          id="m17"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m17})` }}
-        ></div>
-        <div
-          className="box"
-          id="m18"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m18})` }}
-        ></div>
-        <div
-          className="box"
-          id="m19"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m19})` }}
-        ></div>
-        <div
-          className="box"
-          id="m20"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m20})` }}
-        ></div>
-        <div
-          className="box"
-          id="m21"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m21})` }}
-        ></div>
-        <div
-          className="box"
-          id="m22"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m22})` }}
-        ></div>
-        <div
-          className="box"
-          id="m23"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m23})` }}
-        ></div>
-        {/* <div
-          className="box"
-          id="m24"
-          onClick={(event) => handleClick(event)}
-          style={{ backgroundImage: `url(${images.m24})` }}
-        ></div> */}
-        <Box id="m24" imgUrl={images.m24} letter={obj.board[0]}></Box>
+        {Object.keys(images).map((m, index) => (
+          <Box
+            key={m}
+            id={m}
+            imgUrl={img[index]}
+            letter={obj.board[index]}
+            clicked={handleClick}
+          ></Box>
+        ))}
+
         <div className="box" id="m25"></div>
       </div>
       <div className="footer" id="footer">
