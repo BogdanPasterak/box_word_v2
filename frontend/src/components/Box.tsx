@@ -1,12 +1,17 @@
 import React from "react";
 
-function Box(props: { id: string; imgUrl: string; letter: string }) {
+function Box(props: {
+  id: string;
+  imgUrl: string;
+  letter: string;
+  clicked: (id: string) => void;
+}) {
   return (
     <div
       className="box"
       id={props.id}
-      // onClick={(event) => handleClick(event)}
       style={{ backgroundImage: `url(${props.imgUrl})` }}
+      onClick={() => props.clicked(props.id)}
     >
       {props.letter}
     </div>
