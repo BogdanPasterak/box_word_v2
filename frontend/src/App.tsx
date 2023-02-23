@@ -14,15 +14,32 @@ import m21 from "./image/m21.png";
 import m22 from "./image/m22.png";
 import m23 from "./image/m23.png";
 import m24 from "./image/m24.png";
-import { print, generateStub } from "./scripts/scripts";
+import { generateStub } from "./scripts/scripts";
 import { bfsStart } from "./scripts/bfs";
-import { dfsStart, openFile, openFile2 } from "./scripts/dfs";
+import { dfsStart, openFile2 } from "./scripts/dfs";
 import { aStart } from "./scripts/astar";
+import { BoardObj } from "./models/board";
 
 function App() {
-  let result = generateStub();
   let welcome = "Welcome";
+  let obj: BoardObj = generateStub();
   // console.log("-" + result + "-");
+
+  function setLetters() {
+    // console.log(obj.toString());
+
+    let boxes = document.querySelectorAll(".box");
+
+    boxes.forEach((box, index) => {
+      box!.textContent = obj.board[index];
+    });
+  }
+
+  function handleClick(event: any): void {
+    // convert id to index
+    let index = parseInt(event.target.id.slice(1)) - 10;
+    console.log(index);
+  }
 
   return (
     <div
@@ -39,6 +56,7 @@ function App() {
         <button onClick={dfsStart}>DFS</button>
         <button onClick={aStart}>A *</button>
         <button onClick={openFile2}>Save data</button>
+        <button onClick={setLetters}>letters</button>
       </div>
       <div className="info" id="info">
         <span>Time 23:15</span>
@@ -46,54 +64,97 @@ function App() {
         <span>Moves - 27</span>
       </div>
       <div className="board" id="board">
-        <div className="box" id="m10" onClick={() => print("10")}>
-          <img src={m10} alt="" />
-        </div>
-        <div className="box" id="m11" onClick={() => print("11")}>
-          <img src={m11} alt="" />
-        </div>
-        <div className="box" id="m12" onClick={() => print("12")}>
-          <img src={m12} alt="" />
-        </div>
-        <div className="box" id="m13" onClick={() => print("13")}>
-          <img src={m13} alt="" />
-        </div>
-        <div className="box" id="m14" onClick={() => print("14")}>
-          <img src={m14} alt="" />
-        </div>
-        <div className="box" id="m15" onClick={() => print("15")}>
-          <img src={m15} alt="" />
-        </div>
-        <div className="box" id="m16" onClick={() => print("16")}>
-          <img src={m16} alt="" />
-        </div>
-        <div className="box" id="m17" onClick={() => print("17")}>
-          <img src={m17} alt="" />
-        </div>
-        <div className="box" id="m18" onClick={() => print("18")}>
-          <img src={m18} alt="" />
-        </div>
-        <div className="box" id="m19" onClick={() => print("19")}>
-          <img src={m19} alt="" />
-        </div>
-        <div className="box" id="m20" onClick={() => print("20")}>
-          <img src={m20} alt="" />
-        </div>
-        <div className="box" id="m21" onClick={() => print("21")}>
-          <img src={m21} alt="" />
-        </div>
-        <div className="box" id="m22" onClick={() => print("22")}>
-          <img src={m22} alt="" />
-        </div>
-        <div className="box" id="m23" onClick={() => print("23")}>
-          <img src={m23} alt="" />
-        </div>
-        <div className="box" id="m24" onClick={() => print("24")}>
-          <img src={m24} alt="" />
-        </div>
-        <div className="box" id="m25" onClick={() => print("25")}>
-          {/* <img src={m10} alt="" /> */}
-        </div>
+        <div
+          className="box"
+          id="m10"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m10})` }}
+        ></div>
+        <div
+          className="box"
+          id="m11"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m11})` }}
+        ></div>
+        <div
+          className="box"
+          id="m12"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m12})` }}
+        ></div>
+        <div
+          className="box"
+          id="m13"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m13})` }}
+        ></div>
+        <div
+          className="box"
+          id="m14"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m14})` }}
+        ></div>
+        <div
+          className="box"
+          id="m15"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m15})` }}
+        ></div>
+        <div
+          className="box"
+          id="m16"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m16})` }}
+        ></div>
+        <div
+          className="box"
+          id="m17"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m17})` }}
+        ></div>
+        <div
+          className="box"
+          id="m18"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m18})` }}
+        ></div>
+        <div
+          className="box"
+          id="m19"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m19})` }}
+        ></div>
+        <div
+          className="box"
+          id="m20"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m20})` }}
+        ></div>
+        <div
+          className="box"
+          id="m21"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m21})` }}
+        ></div>
+        <div
+          className="box"
+          id="m22"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m22})` }}
+        ></div>
+        <div
+          className="box"
+          id="m23"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m23})` }}
+        ></div>
+        <div
+          className="box"
+          id="m24"
+          onClick={(event) => handleClick(event)}
+          style={{ backgroundImage: `url(${m24})` }}
+        ></div>
+        <div className="box" id="m25"></div>
       </div>
       <div className="footer" id="footer">
         <p>
