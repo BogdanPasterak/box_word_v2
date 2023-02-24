@@ -13,10 +13,10 @@ function App() {
   const [obj, updateObj] = useState(generateStub());
   const [welcome, setWelcome] = useState("Welcome");
 
-  function handleClick(id: string): void {
+  function handleClick(index: number): void {
     // convert id to index
     // let index = parseInt(event.target.id.slice(1)) - 10;
-    console.log(id);
+    console.log(index);
   }
 
   const img = Object.values(images);
@@ -44,16 +44,18 @@ function App() {
         <span>Moves - 27</span>
       </div>
       <div className="board" id="board">
+        {/* 15 boxes */}
         {Object.keys(images).map((m, index) => (
           <Box
-            key={m}
+            key={index}
+            index={index}
             id={m}
             imgUrl={img[index]}
             letter={obj.board[index]}
             clicked={handleClick}
           ></Box>
         ))}
-
+        {/* box space */}
         <div className="box" id="m25"></div>
       </div>
       <div className="footer" id="footer">
