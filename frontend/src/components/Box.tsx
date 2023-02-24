@@ -1,18 +1,22 @@
 import React from "react";
 
-interface Details {
+function Box(props: {
+  index: number;
+  id: string;
   imgUrl: string;
-}
-
-function Box(props: Details) {
+  letter: string;
+  clicked: (index: number) => void;
+}) {
   return (
     <div
       className="box"
-      id="m10"
-      // onClick={(event) => handleClick(event)}
-      // style={{ backgroundImage: `url(${m10})` }}
+      id={props.id}
+      style={{ backgroundImage: `url(${props.imgUrl})` }}
+      onClick={() => props.clicked(props.index)}
     >
-      B
+      {props.letter}
     </div>
   );
 }
+
+export default Box;
