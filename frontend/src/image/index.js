@@ -13,6 +13,7 @@ import m21 from "./m21.png";
 import m22 from "./m22.png";
 import m23 from "./m23.png";
 import m24 from "./m24.png";
+import m25 from "./m25.png";
 
 const images = {
   m10,
@@ -30,6 +31,7 @@ const images = {
   m22,
   m23,
   m24,
+  m25,
 };
 
 export default images;

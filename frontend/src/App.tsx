@@ -7,19 +7,57 @@ import { aStart } from "./scripts/astar";
 import { BoardObj } from "./models/board";
 import { useState } from "react";
 import Box from "./components/Box";
+import { Expand } from "./models/expand";
 
 function App() {
   // starting seting
-  const [obj, updateObj] = useState(generateStub());
+  const [ex, updateEx] = useState(new Expand(generateStub()));
+  // const [tiles, updateTiles] = useState(tilesSet());
   const [welcome, setWelcome] = useState("Welcome");
 
   function handleClick(index: number): void {
-    // convert id to index
-    // let index = parseInt(event.target.id.slice(1)) - 10;
-    console.log(index);
+    if (isNeighborSpace(index)) {
+      // obj.move(index);
+      updateEx(ex.move(index).copy());
+      console.log(ex.toString());
+    }
   }
 
+  // check if space is neighbor
+  function isNeighborSpace(index: number): boolean {
+    if (index > 3 && ex.pos === index - 4) return true;
+    if (index % 4 > 0 && ex.pos === index - 1) return true;
+    if (index % 4 < 3 && ex.pos === index + 1) return true;
+    if (index < 12 && ex.pos === index + 4) return true;
+    return false;
+  }
+
+  // // update position of tiles
+  // function tilesSet(index?: number): number[] {
+  //   let arr = Array.from({ length: 16 }, (_, i) => i + 10);
+  //   if (index === undefined && ex.from.length === 0) {
+  //     console.log("Start");
+
+  //     return arr;
+  //   }
+  //   for (let i = 0; i < ex.from.length; i++) {
+  //     let next = i + 1 === ex.from.length ? ex.pos : ex.from[i + 1];
+  //     // swap images folows moves
+  //     let temp = arr[ex.from[i]];
+  //     arr[ex.from[i]] = arr[next];
+  //     arr[next] = temp;
+  //   }
+  //   console.log(arr);
+
+  //   return arr;
+  // }
+
+  // function tilesStart() {
+  //   return Array.from({ length: 16 }, (_, i) => i + 10);
+  // }
+
   const img = Object.values(images);
+  // console.log(images);
 
   return (
     <div
@@ -49,14 +87,15 @@ function App() {
           <Box
             key={index}
             index={index}
+            bg={ex.bg[index]}
             id={m}
             imgUrl={img[index]}
-            letter={obj.board[index]}
+            letter={ex.board[index]}
             clicked={handleClick}
           ></Box>
         ))}
         {/* box space */}
-        <div className="box" id="m25"></div>
+        {/* <div className="box" id="m25" style={{ order: 25 }}></div> */}
       </div>
       <div className="footer" id="footer">
         <p>
