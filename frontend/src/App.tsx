@@ -11,7 +11,9 @@ import { Expand } from "./models/expand";
 
 function App() {
   // starting seting
-  const [ex, updateEx] = useState(new Expand(generateStub()));
+  const [ex, updateEx] = useState(
+    new Expand(generateStub(), Object.values(images))
+  );
   // const [tiles, updateTiles] = useState(tilesSet());
   const [welcome, setWelcome] = useState("Welcome");
 
@@ -31,33 +33,6 @@ function App() {
     if (index < 12 && ex.pos === index + 4) return true;
     return false;
   }
-
-  // // update position of tiles
-  // function tilesSet(index?: number): number[] {
-  //   let arr = Array.from({ length: 16 }, (_, i) => i + 10);
-  //   if (index === undefined && ex.from.length === 0) {
-  //     console.log("Start");
-
-  //     return arr;
-  //   }
-  //   for (let i = 0; i < ex.from.length; i++) {
-  //     let next = i + 1 === ex.from.length ? ex.pos : ex.from[i + 1];
-  //     // swap images folows moves
-  //     let temp = arr[ex.from[i]];
-  //     arr[ex.from[i]] = arr[next];
-  //     arr[next] = temp;
-  //   }
-  //   console.log(arr);
-
-  //   return arr;
-  // }
-
-  // function tilesStart() {
-  //   return Array.from({ length: 16 }, (_, i) => i + 10);
-  // }
-
-  const img = Object.values(images);
-  // console.log(images);
 
   return (
     <div
@@ -87,9 +62,9 @@ function App() {
           <Box
             key={index}
             index={index}
-            bg={ex.bg[index]}
+            order={ex.order.indexOf(index)}
             id={m}
-            imgUrl={img[index]}
+            imgUrl={ex.bg[index]}
             letter={ex.board[index]}
             clicked={handleClick}
           ></Box>
