@@ -6,6 +6,7 @@ import { arr18 } from "./arr_18";
 import { arr19 } from "./arr_19";
 import { arr20 } from "./arr_20";
 import { arr21 } from "./arr_21";
+import { arr22 } from "./arr_22";
 
 export function dfs(obj: BoardObj): BoardObj {
   // starting element
@@ -114,10 +115,10 @@ export function dfsLevels(obj: BoardObj, level: number): BoardObj | null {
 // checked 12264, unchecked 23226
 export function openFile2() {
   // level 15 in 5 steps, together 10 hours
-  const level = 22;
+  const level = 23;
   // console.log(`========= LEVEL ${level} ============`);
   const abc = "abcdefghijklmno";
-  const index = 14;
+  const index = 0;
 
   // const part = allParts[index];
   console.log(`========= LEVEL ${level} ${abc[index]} ============`);
@@ -142,6 +143,7 @@ export function openFile2() {
     .concat(arr19)
     .concat(arr20)
     .concat(arr21)
+    .concat(arr22)
     .sort();
   console.log("used =", setsUsed.length);
 
