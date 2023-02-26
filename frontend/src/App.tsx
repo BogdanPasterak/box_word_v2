@@ -19,14 +19,16 @@ function App() {
 
   function handleClick(index: number): void {
     if (isNeighborSpace(index)) {
-      // obj.move(index);
+      // console.log("klik jest sasiad", index);
       updateEx(ex.move(index).copy());
       console.log(ex.toString());
-    }
+    } else console.log("klik", index);
   }
 
   // check if space is neighbor
   function isNeighborSpace(index: number): boolean {
+    console.log("spacja", ex.pos, " index", index);
+
     if (index > 3 && ex.pos === index - 4) return true;
     if (index % 4 > 0 && ex.pos === index - 1) return true;
     if (index % 4 < 3 && ex.pos === index + 1) return true;
@@ -61,9 +63,7 @@ function App() {
         {Object.keys(images).map((m, index) => (
           <Box
             key={index}
-            index={index}
             order={ex.order.indexOf(index)}
-            id={m}
             imgUrl={ex.bg[index]}
             letter={ex.board[index]}
             clicked={handleClick}
