@@ -272,3 +272,75 @@ export function openFile() {
     window.URL.revokeObjectURL(url);
   }, 0);
 }
+
+export function unresolved() {
+  // const part = allParts[index];
+  console.log(`========= generate unresolved sets ============`);
+
+  const filename = `unsolved.tsx`;
+  const type = "text/plain";
+
+  let data = ["export const unresolved: string[] = [\n"];
+  let board = "";
+  // let set: BoardObj;
+  // let answer: BoardObj | null;
+  let count = 0;
+  // let checked = 0;
+  // let find = 0;
+  // let now: number;
+  // let start = Date.now();
+
+  // array with used sets
+  const setsUsed = arr
+    .concat(arr17)
+    .concat(arr18)
+    .concat(arr19)
+    .concat(arr20)
+    .concat(arr21)
+    .concat(arr22)
+    .sort();
+  console.log("used =", setsUsed.length);
+
+  for (let a = 0; a < 15; a++) {
+    for (let b = 0; b < 15; b++) {
+      if (b === a) continue;
+      for (let c = 0; c < 15; c++) {
+        if (c === a || c === b) continue;
+        for (let d = 0; d < 15; d++) {
+          if (d === a || d === b || c === b) continue;
+          board = "";
+          for (let i = 0; i < 15; i++) {
+            if (i === a) board += "A";
+            else if (i === b) board += "B";
+            else if (i === c) board += "C";
+            else if (i === d) board += "D";
+            else board += "*";
+          }
+          board += " ";
+          if (!setsUsed.includes(board)) {
+            data.push(`"${board}",\n`);
+            count++;
+          }
+        }
+      }
+    }
+  }
+  console.log("no used =", count);
+
+  data.push("];");
+
+  // save to file
+
+  var file = new Blob(data, { type: type });
+  //
+  var a = document.createElement("a"),
+    url = URL.createObjectURL(file);
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function () {
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  }, 0);
+}

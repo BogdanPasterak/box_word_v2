@@ -18,15 +18,9 @@ export interface PriorityQueue {
 
 PriorityQueue.prototype.enqueue = function (item: ABoardObj) {
   let size = this.items.length - 1;
+
   // experimental queue reduction
-  let el: ABoardObj;
-  if (this.items.length && this.items[0].rating > 50) {
-    el = this.items.shift()!;
-    console.log(
-      `delete rating = ${el.toString()}, size = ${this.items.length}`
-    );
-    size--;
-  }
+  if (item.rating > 20) return;
 
   // empty queue
   if (size < 0) this.items.push(item);

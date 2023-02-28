@@ -1,4 +1,5 @@
 import { Board, BoardObj } from "../models/board";
+import { Expand } from "../models/expand";
 
 export function print(s: string) {
   console.log("Bogdan", s);
@@ -23,8 +24,8 @@ export function generateStub(): BoardObj {
 }
 
 // test if board match word
-export function winTest(obj: Board): boolean {
-  const b = obj.board;
+export function winTest(obj: Board | Expand): boolean {
+  const b = obj instanceof Expand ? obj.getView() : obj.board;
   const word = obj.word;
 
   // first position top left corner - 3 posible

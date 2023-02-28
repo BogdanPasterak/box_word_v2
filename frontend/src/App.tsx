@@ -1,8 +1,8 @@
 import bg from "./image/bg.jpg";
 import images from "./image";
-import { generateStub } from "./scripts/scripts";
+import { generateStub, winTest } from "./scripts/scripts";
 import { bfsStart } from "./scripts/bfs";
-import { dfsStart, openFile2 } from "./scripts/dfs";
+import { dfsStart, openFile2, unresolved } from "./scripts/dfs";
 import { aStart } from "./scripts/astar";
 import { BoardObj } from "./models/board";
 import { useState } from "react";
@@ -21,13 +21,17 @@ function App() {
     if (isNeighborSpace(index)) {
       // console.log("klik jest sasiad", index);
       updateEx(ex.move(index).copy());
-      console.log(ex.toString());
+      // console.log(ex.toString());
+      // console.log(`view = [${ex.getView().toString()}]`);
+      if (winTest(ex)) {
+        console.log("WIN ------------");
+      }
     } else console.log("klik", index);
   }
 
   // check if space is neighbor
   function isNeighborSpace(index: number): boolean {
-    console.log("spacja", ex.pos, " index", index);
+    // console.log("spacja", ex.pos, " index", index);
 
     if (index > 3 && ex.pos === index - 4) return true;
     if (index % 4 > 0 && ex.pos === index - 1) return true;
@@ -51,7 +55,7 @@ function App() {
         <button onClick={dfsStart}>DFS</button>
         <button onClick={aStart}>A *</button>
         <button onClick={openFile2}>Save data</button>
-        {/* <button onClick={() => setLetters(generateStub())}>letters</button> */}
+        <button onClick={unresolved}>letters</button>
       </div>
       <div className="info" id="info">
         <span>Time 23:15</span>

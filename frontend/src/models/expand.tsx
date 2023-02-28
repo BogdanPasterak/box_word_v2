@@ -17,6 +17,7 @@ export interface Expand {
   move: (p: number) => Expand;
   back: () => Expand;
   toString: () => string;
+  getView: () => string;
 }
 
 Expand.prototype.copy = function () {
@@ -49,13 +50,6 @@ Expand.prototype.move = function (p: number) {
 Expand.prototype.back = function () {
   if (this.from.length) {
     let old = this.from.pop() || -1;
-    // let swap = this.board[old];
-
-    // // swap two element [space and element at index p]
-    // this.board = this.board
-    //   .split("")
-    //   .map((e, i) => (i === old ? " " : i === this.pos ? swap : e))
-    //   .join("");
 
     // swap backgrount number
     let space = this.bg[this.pos];
@@ -85,4 +79,21 @@ Expand.prototype.toString = function () {
   s += `\norder - [${this.order.toString()}]`;
 
   return s;
+};
+
+Expand.prototype.getView = function () {
+  let s = this.board.split("");
+  let size = this.from.length - 1;
+
+  for (let i = 0; i <= size; i++) {
+    if (i === size) {
+      s[this.from[i]] = s[this.pos];
+      s[this.pos] = " ";
+    } else {
+      s[this.from[i]] = s[this.from[i + 1]];
+      s[this.from[i + 1]] = " ";
+    }
+  }
+
+  return s.join("");
 };
