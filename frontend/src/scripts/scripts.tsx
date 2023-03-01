@@ -82,3 +82,21 @@ export function nextMoves(obj: Board): number[] {
   }
   return next;
 }
+
+export function counting() {
+  let counter = 0;
+
+  for (let a = 0; a < 15; a++) {
+    for (let b = 0; b < 15; b++) {
+      if (a === b) continue;
+      for (let c = 0; c < 15; c++) {
+        if (a === c || b === c) continue;
+        for (let d = 0; d < 15; d++) {
+          if (a === d || b === d || c === d) continue;
+          counter++;
+        }
+      }
+    }
+  }
+  console.log(counter);
+}

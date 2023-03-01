@@ -307,7 +307,7 @@ export function unresolved() {
       for (let c = 0; c < 15; c++) {
         if (c === a || c === b) continue;
         for (let d = 0; d < 15; d++) {
-          if (d === a || d === b || c === b) continue;
+          if (d === a || d === b || d === c) continue;
           board = "";
           for (let i = 0; i < 15; i++) {
             if (i === a) board += "A";
