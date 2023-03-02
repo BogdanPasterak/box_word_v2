@@ -118,7 +118,7 @@ export function openFile2() {
   const level = 23;
   // console.log(`========= LEVEL ${level} ============`);
   const abc = "abcdefghijklmno";
-  const index = 2;
+  const index = 11;
 
   // const part = allParts[index];
   console.log(`========= LEVEL ${level} ${abc[index]} ============`);
