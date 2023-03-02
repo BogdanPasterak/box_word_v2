@@ -1,4 +1,5 @@
 import { Board, BoardObj } from "../models/board";
+import { Expand } from "../models/expand";
 
 export function print(s: string) {
   console.log("Bogdan", s);
@@ -23,8 +24,8 @@ export function generateStub(): BoardObj {
 }
 
 // test if board match word
-export function winTest(obj: Board): boolean {
-  const b = obj.board;
+export function winTest(obj: Board | Expand): boolean {
+  const b = obj instanceof Expand ? obj.getView() : obj.board;
   const word = obj.word;
 
   // first position top left corner - 3 posible
@@ -80,4 +81,22 @@ export function nextMoves(obj: Board): number[] {
     if (index > -1) next.splice(index, 1);
   }
   return next;
+}
+
+export function counting() {
+  let counter = 0;
+
+  for (let a = 0; a < 15; a++) {
+    for (let b = 0; b < 15; b++) {
+      if (a === b) continue;
+      for (let c = 0; c < 15; c++) {
+        if (a === c || b === c) continue;
+        for (let d = 0; d < 15; d++) {
+          if (a === d || b === d || c === d) continue;
+          counter++;
+        }
+      }
+    }
+  }
+  console.log(counter);
 }

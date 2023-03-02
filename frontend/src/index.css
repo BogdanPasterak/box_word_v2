@@ -84,9 +84,40 @@ body {
   display: inline-block;
 }
 
+.shakeit {
+  animation: 0.4s 1 none shake;
+}
+
 /* breakpoints */
 @media screen and (max-width: 530px), (max-height: 400px) {
   body {
     font-size: 0.9em;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(7deg);
+  }
+  15% {
+    transform: rotate(-7deg);
+  }
+  30% {
+    transform: rotate(7deg);
+  }
+  45% {
+    transform: rotate(-7deg);
+  }
+  60% {
+    transform: rotate(7deg);
+  }
+  75% {
+    transform: rotate(-7deg);
+  }
+  90% {
+    transform: rotate(7deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }

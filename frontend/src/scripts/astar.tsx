@@ -24,8 +24,9 @@ export function a(obj: BoardObj): BoardObj {
     now = queue.dequeue();
     // win
     if (winTest(now)) return now;
-    if (++count > 200000) {
+    if (++count > 300000) {
       console.log("========== BREAK ===========");
+      console.log("Queue =", queue.items.length);
       current = now;
       break;
     }
@@ -51,6 +52,7 @@ export function a(obj: BoardObj): BoardObj {
 export function aStart() {
   let obj = generateStub();
   obj.board = "**D*******C**BA ";
+  obj.board = "A*BC****D****** "; // 20
   // obj.board = "*C***D**B*****A "; // 19
 
   console.log("============== START ================");
