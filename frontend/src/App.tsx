@@ -32,8 +32,8 @@ function App() {
         box?.classList.remove("shakeit");
       }, 400);
 
-      console.log("klik", index);
-      console.log(box);
+      // console.log("klik", index);
+      // console.log(box);
     }
   }
 
