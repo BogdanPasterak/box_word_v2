@@ -35,6 +35,7 @@ export function a(obj: BoardObj): BoardObj {
     //   `--- Now, queue size = ${queue.items.length}, count = ${count}`
     // );
 
+    // console.log("Step", count);
     // console.log(now.toString());
 
     // eslint-disable-next-line no-loop-func
@@ -46,20 +47,73 @@ export function a(obj: BoardObj): BoardObj {
     });
   }
 
+  console.log("count", count);
+
+  return current;
+}
+
+// A * algorythm
+export function a2(obj: BoardObj): BoardObj {
+  // starting element
+  let current: BoardObj = obj.copy();
+  // initial queue with starting object
+  let queue: PriorityQueue = new PriorityQueue(
+    new ABoardObj(current, estimation(current))
+  );
+  let now: ABoardObj;
+  let count = 0;
+
+  while (!queue.isEmpty()) {
+    now = queue.dequeue();
+    // win
+    if (winTest(now)) return now;
+    if (++count > 300000) {
+      console.log("========== BREAK ===========");
+      console.log("Queue =", queue.items.length);
+      current = now;
+      break;
+    }
+
+    // console.log(
+    //   `--- Now, queue size = ${queue.items.length}, count = ${count}`
+    // );
+
+    // console.log("Step", count);
+    // console.log(now.toString());
+
+    // eslint-disable-next-line no-loop-func
+    nextMoves(now).forEach((p) => {
+      // console.log("moves", p);
+      now.move(p);
+      queue.enqueue(new ABoardObj(now, estimation2(now)));
+      now.back();
+    });
+  }
+
+  console.log("count", count);
+
   return current;
 }
 
 export function aStart() {
   let obj = generateStub();
   obj.board = "**D*******C**BA ";
-  obj.board = "A*BC****D****** "; // 20
+  obj.board = "A***CB*******D* "; // 10
+  obj.board = "A*BD*********C* "; // 15
   // obj.board = "*C***D**B*****A "; // 19
 
-  console.log("============== START ================");
   console.log(obj.toString());
+  console.log("============== START ================");
   let start = Date.now();
 
   obj = a(obj);
+  console.log(`time = ${Date.now() - start} ms`);
+  console.log("============== STOP ================");
+  console.log(obj.toString());
+  console.log("============== START ================");
+  start = Date.now();
+
+  obj = a2(obj);
   console.log(`time = ${Date.now() - start} ms`);
   console.log("============== STOP ================");
   console.log(obj.toString());
@@ -116,4 +170,35 @@ function stepsSpace(to: number, from: number): number {
   let distance = (from % 4) + Math.floor(from / 4);
 
   return distance + (distance - 1) * 5;
+}
+
+// distance
+export function distance(a: number, b: number): number {
+  let x = Math.abs((a % 4) - (b % 4));
+  let y = Math.abs(~~(a / 4) - ~~(b / 4));
+
+  return x + y;
+}
+
+const wonSet = [
+  [0, 3, 12, 0, 4, 8, 12, 0, 1, 2, 3],
+  [5, 6, 9, 1, 5, 9, 13, 4, 5, 6, 7],
+  [10, 9, 6, 2, 6, 10, 14, 8, 9, 10, 11],
+  [15, 12, 3, 3, 7, 11, 15, 12, 13, 14, 15],
+];
+
+//
+export function estimation2(obj: BoardObj) {
+  let d = 0;
+  let min = 24;
+
+  for (let i = 0; i < 11; i++) {
+    d = 0;
+    for (let l = 0; l < 4; l++) {
+      d += distance(obj.board.indexOf(obj.word[l]), wonSet[l][i]);
+    }
+    if (d < min) min = d;
+  }
+
+  return min;
 }
