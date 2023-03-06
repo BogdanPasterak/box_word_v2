@@ -20,7 +20,7 @@ PriorityQueue.prototype.enqueue = function (item: ABoardObj) {
   let size = this.items.length - 1;
 
   // experimental queue reduction
-  if (item.rating > 20) return;
+  if (item.rating > 25) return;
 
   // empty queue
   if (size < 0) this.items.push(item);

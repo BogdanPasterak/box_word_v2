@@ -59,6 +59,7 @@ export function dfsStart() {
   let obj = generateStub();
   obj.board = "**D*******C**BA ";
   // obj.board = "*C***D**B*****A "; // 19
+  obj.board = "D*****B**CA**** "; // 23
 
   console.log("============== START ================");
   console.log(obj.toString());
@@ -118,7 +119,7 @@ export function openFile2() {
   const level = 23;
   // console.log(`========= LEVEL ${level} ============`);
   const abc = "abcdefghijklmno";
-  const index = 13;
+  const index = 14;
 
   // const part = allParts[index];
   console.log(`========= LEVEL ${level} ${abc[index]} ============`);

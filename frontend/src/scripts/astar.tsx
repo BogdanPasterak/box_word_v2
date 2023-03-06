@@ -53,15 +53,14 @@ export function a(obj: BoardObj): BoardObj {
 }
 
 // A * algorythm
-export function a2(obj: BoardObj): BoardObj {
+export function a2(obj: BoardObj, max: number = 30): BoardObj {
   // starting element
   let current: BoardObj = obj.copy();
   // initial queue with starting object
-  let queue: PriorityQueue = new PriorityQueue(
-    new ABoardObj(current, estimation(current))
-  );
+  let queue: PriorityQueue = new PriorityQueue(new ABoardObj(obj.copy(), 0));
   let now: ABoardObj;
   let count = 0;
+  let est: number;
 
   while (!queue.isEmpty()) {
     now = queue.dequeue();
@@ -74,18 +73,14 @@ export function a2(obj: BoardObj): BoardObj {
       break;
     }
 
-    // console.log(
-    //   `--- Now, queue size = ${queue.items.length}, count = ${count}`
-    // );
-
-    // console.log("Step", count);
     // console.log(now.toString());
 
     // eslint-disable-next-line no-loop-func
     nextMoves(now).forEach((p) => {
       // console.log("moves", p);
       now.move(p);
-      queue.enqueue(new ABoardObj(now, estimation2(now)));
+      est = estimation2(now) + now.from.length;
+      if (est <= max) queue.enqueue(new ABoardObj(now, est));
       now.back();
     });
   }
@@ -97,21 +92,26 @@ export function a2(obj: BoardObj): BoardObj {
 
 export function aStart() {
   let obj = generateStub();
-  obj.board = "**D*******C**BA ";
+  obj.board = "**A***B******DC "; // 4
+  obj.board = "*BA**C***D***** "; // 6
+  obj.board = "*A***B******D*C "; // 8
   obj.board = "A***CB*******D* "; // 10
   obj.board = "A*BD*********C* "; // 15
-  // obj.board = "*C***D**B*****A "; // 19
+  obj.board = "*C***D**B*****A "; // 19
+  obj.board = "**BCD*****A**** "; // 22
+  obj.board = "D*****B**CA**** "; // 23
 
   console.log(obj.toString());
+  // compare two
   console.log("============== START ================");
   let start = Date.now();
 
-  obj = a(obj);
-  console.log(`time = ${Date.now() - start} ms`);
-  console.log("============== STOP ================");
-  console.log(obj.toString());
-  console.log("============== START ================");
-  start = Date.now();
+  // obj = a(obj);
+  // console.log(`time = ${Date.now() - start} ms`);
+  // console.log("============== STOP ================");
+  // console.log(obj.toString());
+  // console.log("============== START ================");
+  // start = Date.now();
 
   obj = a2(obj);
   console.log(`time = ${Date.now() - start} ms`);
