@@ -63,7 +63,7 @@ function App() {
         <button onClick={dfsStart}>DFS</button>
         <button onClick={aStart}>A *</button>
         <button onClick={openFile2}>Save data</button>
-        <button onClick={counting}>Counting</button>
+        <button onClick={unresolved}>Counting</button>
       </div>
       <div className="info" id="info">
         <span>Time 23:15</span>
