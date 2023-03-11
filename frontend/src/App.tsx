@@ -3,7 +3,7 @@ import images from "./image";
 import { counting, generateStub, winTest } from "./scripts/scripts";
 import { bfsStart } from "./scripts/bfs";
 import { dfsStart, openFile2, unresolved } from "./scripts/dfs";
-import { aStart } from "./scripts/astar";
+import { aStart, openFile3 } from "./scripts/astar";
 import { BoardObj } from "./models/board";
 import { useState } from "react";
 import Box from "./components/Box";
@@ -62,8 +62,8 @@ function App() {
         <button onClick={bfsStart}>BFS</button>
         <button onClick={dfsStart}>DFS</button>
         <button onClick={aStart}>A *</button>
-        <button onClick={openFile2}>Save data</button>
-        <button onClick={unresolved}>Counting</button>
+        <button onClick={openFile3}>Save data</button>
+        {/* <button onClick={unresolved}>Counting</button> */}
       </div>
       <div className="info" id="info">
         <span>Time 23:15</span>

@@ -2,6 +2,7 @@ import { ABoardObj } from "../models/aboard";
 import { BoardObj } from "../models/board";
 import { PriorityQueue } from "../models/priorityQueue";
 import { winTest, generateStub, nextMoves } from "./scripts";
+import { unresolved } from "./unresolved";
 
 const aDist = "0000011101220123";
 const bDist = "1011000010111012";
@@ -66,12 +67,12 @@ export function a2(obj: BoardObj, max: number = 30): BoardObj {
     now = queue.dequeue();
     // win
     if (winTest(now)) return now;
-    if (++count > 300000) {
-      console.log("========== BREAK ===========");
-      console.log("Queue =", queue.items.length);
-      current = now;
-      break;
-    }
+    // if (++count > 400000) {
+    //   console.log("========== BREAK ===========");
+    //   console.log("Queue =", queue.items.length);
+    //   current = now;
+    //   break;
+    // }
 
     // console.log(now.toString());
 
@@ -100,6 +101,8 @@ export function aStart() {
   obj.board = "*C***D**B*****A "; // 19
   obj.board = "**BCD*****A**** "; // 22
   obj.board = "D*****B**CA**** "; // 23
+  obj.board = "DA*B*******C*** "; // ?
+  obj.board = "DA*BC********** "; // ?
 
   console.log(obj.toString());
   // compare two
@@ -201,4 +204,95 @@ export function estimation2(obj: BoardObj) {
   }
 
   return min;
+}
+
+// for levels over 15
+// checked 12264, unchecked 23226
+export function openFile3() {
+  // level 15 in 5 steps, together 10 hours
+  const level = 24;
+  // console.log(`========= LEVEL ${level} ============`);
+  const abc = "abcdefghijklmno";
+  const index = 0;
+
+  // const part = allParts[index];
+  console.log(`========= LEVEL ${level} ${abc[index]} ============`);
+
+  const filename = `data_level_${level}_${abc[index]}.csv`;
+  const type = "text/plain";
+
+  let data = ["A,B,C,D,board start,board end,lvl,path"];
+  let board = "";
+  let set: BoardObj;
+  let answer: BoardObj | null;
+  let count = 0;
+  // let checked = 0;
+  let find = 0;
+  let now: number;
+  let start = Date.now();
+
+  // array with used sets
+  const unres = unresolved;
+
+  console.log("no used =", unres.length);
+
+  for (let i = 0; i < unres.length; i++) {
+    // for (let b = 0; b < 15; b++) {
+    //   checked = find = 0;
+    //   if (b === a) continue;
+    //   for (let c = 0; c < 15; c++) {
+    //     if (c === a || c === b) continue;
+    //     for (let d = 0; d < 15; d++) {
+    //       if (d === a || d === b || d === c) continue;
+    //       board = "";
+    //       for (let i = 0; i < 15; i++) {
+    //         if (i === a) board += "A";
+    //         else if (i === b) board += "B";
+    //         else if (i === c) board += "C";
+    //         else if (i === d) board += "D";
+    //         else board += "*";
+    //       }
+    board = unres[i];
+    // if (!setsUsed.includes(board)) {
+    //   checked++;
+    set = new BoardObj(board, "ABCD");
+    answer = a2(set, level);
+    count++;
+    if (winTest(answer)) {
+      find++;
+      data.push(
+        `\n${board.indexOf("A")},` +
+          `${board.indexOf("B")},` +
+          `${board.indexOf("C")},` +
+          `${board.indexOf("D")},` +
+          `"${board}","${answer.board}"` +
+          `,${answer.from.length},${answer.from.toString()}`
+      );
+      // } else {
+      //   console.log("OVER 27");
+    }
+    // }
+    //     }
+    //   }
+    now = Math.floor((Date.now() - start) / 1000);
+    console.log(`time = ${now} s, from = ${count}, find = ${find}`);
+    if (count > 10) break;
+    // }
+    // console.log(`a = ${a} , count = ${count}`);
+  }
+
+  // save to file
+
+  var file = new Blob(data, { type: type });
+  //
+  var a = document.createElement("a"),
+    url = URL.createObjectURL(file);
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function () {
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  }, 0);
 }
