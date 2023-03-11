@@ -41,6 +41,7 @@ function sizeFitting() {
     board.style.order = "4";
     footer.style.order = "5";
     board.style.position = footer.style.position = "";
+    buttons.style.flexDirection = "row";
 
     if (h > w * 1.35) {
       // vertical position
@@ -51,6 +52,8 @@ function sizeFitting() {
       }
     } else {
       // horizontal position
+      buttons.style.flexDirection = "column";
+
       if (w < h * 1.2) {
         // console.log("square");
         buttons.style.order = "3";
