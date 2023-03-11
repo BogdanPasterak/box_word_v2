@@ -5,7 +5,6 @@ body {
   font-weight: bold;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url("./image/bg.jpg"); */
 }
 
 .procent {
@@ -28,7 +27,9 @@ body {
 }
 
 .buttons {
-  background-color: beige;
+  display: flex;
+
+  justify-content: space-around;
 }
 
 .info {
@@ -47,7 +48,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: azure;
 }
 
 .footer {
@@ -74,6 +74,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 4em;
+  box-shadow: 0 0 2px 0 black;
 }
 
 .box > img {
@@ -82,6 +83,29 @@ body {
 
 .welcome {
   display: inline-block;
+}
+
+.bt {
+  box-shadow: 3px 4px 3px 0px #706420;
+  background: linear-gradient(to bottom, #e0ab37 5%, #a17005 100%);
+  border-radius: 30% 5%;
+  border: 2px solid #633a04;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 0.7em;
+  font-weight: bold;
+  padding: 7px 10px;
+  margin: 10px;
+  text-decoration: none;
+  /* text-shadow: 0px 1px 0px #528ecc; */
+}
+.bt:hover {
+  text-decoration: underline;
+}
+.bt:active {
+  background: linear-gradient(to top, #e0ab37 5%, #a17005 100%);
+  position: relative;
+  top: 1px;
 }
 
 .shakeit {

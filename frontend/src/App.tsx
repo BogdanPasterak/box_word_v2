@@ -23,18 +23,24 @@ function App() {
       // console.log(ex.toString());
       // console.log(`view = [${ex.getView().toString()}]`);
       if (winTest(ex)) {
-        console.log("WIN ------------");
+        // console.log("WIN ------------");
+        ex.word.split("").forEach((l) => {
+          shake("m" + (ex.board.indexOf(l) + 10).toString());
+        });
       }
     } else {
-      let box = document.querySelector(`#${id}`);
-      box?.classList.add("shakeit");
-      setTimeout(function () {
-        box?.classList.remove("shakeit");
-      }, 400);
-
+      shake(id);
       // console.log("klik", index);
       // console.log(box);
     }
+  }
+
+  function shake(id: string) {
+    let box = document.querySelector(`#${id}`);
+    box?.classList.add("shakeit");
+    setTimeout(function () {
+      box?.classList.remove("shakeit");
+    }, 400);
   }
 
   // check if space is neighbor
@@ -48,6 +54,10 @@ function App() {
     return false;
   }
 
+  function show(): void {
+    console.log(ex);
+  }
+
   return (
     <div
       className="procent"
@@ -59,10 +69,21 @@ function App() {
         <p className="welcome">{welcome}</p>
       </div>
       <div className="buttons" id="buttons">
-        <button onClick={bfsStart}>BFS</button>
-        <button onClick={dfsStart}>DFS</button>
-        <button onClick={aStart}>A *</button>
-        <button onClick={openFile3}>Save data</button>
+        <button className="bt" onClick={show}>
+          Click
+        </button>
+        <button className="bt" onClick={bfsStart}>
+          BFS
+        </button>
+        <button className="bt" onClick={dfsStart}>
+          DFS
+        </button>
+        <button className="bt" onClick={aStart}>
+          A *
+        </button>
+        <button className="bt" onClick={openFile3}>
+          Save data
+        </button>
         {/* <button onClick={unresolved}>Counting</button> */}
       </div>
       <div className="info" id="info">
