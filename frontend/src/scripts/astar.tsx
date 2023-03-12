@@ -86,7 +86,7 @@ export function a2(obj: BoardObj, max: number = 30): BoardObj {
     });
   }
 
-  console.log("count", count);
+  // console.log("count", count);
 
   return current;
 }
@@ -212,8 +212,9 @@ export function openFile3() {
   // level 15 in 5 steps, together 10 hours
   const level = 24;
   // console.log(`========= LEVEL ${level} ============`);
-  const abc = "abcdefghijklmno";
-  const index = 0;
+  const abc = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ";
+  const index = 2; // next pack
+  const pack = 100;
 
   // const part = allParts[index];
   console.log(`========= LEVEL ${level} ${abc[index]} ============`);
@@ -230,13 +231,14 @@ export function openFile3() {
   let find = 0;
   let now: number;
   let start = Date.now();
+  let total = start;
 
   // array with used sets
   const unres = unresolved;
 
-  console.log("no used =", unres.length);
+  console.log("no used =", unres.length - index * pack);
 
-  for (let i = 0; i < unres.length; i++) {
+  for (let i = index * pack; i < unres.length; i++) {
     // for (let b = 0; b < 15; b++) {
     //   checked = find = 0;
     //   if (b === a) continue;
@@ -275,11 +277,16 @@ export function openFile3() {
     //     }
     //   }
     now = Math.floor((Date.now() - start) / 1000);
-    console.log(`time = ${now} s, from = ${count}, find = ${find}`);
-    if (count > 10) break;
+    start = Date.now();
+    console.log(
+      `${i}, ${board} , time = ${now} s, from = ${count}, find = ${find}`
+    );
+    if (count >= pack) break;
     // }
     // console.log(`a = ${a} , count = ${count}`);
   }
+  now = Math.floor((Date.now() - total) / 60000);
+  console.log(`total time = ${now} min`);
 
   // save to file
 
