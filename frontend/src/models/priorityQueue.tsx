@@ -33,8 +33,9 @@ PriorityQueue.prototype.enqueue = function (item: ABoardObj) {
       // bigest add to front
       if (size === -1) this.items.unshift(item);
       else if (this.items[size].rating >= item.rating) {
+        // if same compare number of steps (first bigest)
         if (this.items[size].rating === item.rating) {
-          if (this.items[size].from.length > item.from.length)
+          if (this.items[size].from.length < item.from.length)
             this.items.splice(++size, 0, item);
           else continue;
         } else this.items.splice(++size, 0, item);

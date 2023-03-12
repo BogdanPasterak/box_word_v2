@@ -41,8 +41,8 @@ describe("Testing Priority Queue", () => {
   test("same priority should be added at end", () => {
     queue.enqueue(aObj10a);
 
-    expect(aObj10).toBe(queue.items[2]);
-    expect(aObj10a).toBe(queue.items[1]);
+    expect(aObj10).toBe(queue.items[1]);
+    expect(aObj10a).toBe(queue.items[2]);
   });
 
   test("should be added in 10 betwen", () => {
