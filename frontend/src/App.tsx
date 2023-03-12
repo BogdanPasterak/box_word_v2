@@ -55,7 +55,7 @@ function App() {
   }
 
   function show(): void {
-    console.log(ex);
+    console.log(ex.toString());
   }
 
   return (

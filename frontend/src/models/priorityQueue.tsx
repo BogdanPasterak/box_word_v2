@@ -20,7 +20,7 @@ PriorityQueue.prototype.enqueue = function (item: ABoardObj) {
   let size = this.items.length - 1;
 
   // experimental queue reduction
-  if (item.rating > 25) return;
+  // if (item.rating > 25) return;
 
   // empty queue
   if (size < 0) this.items.push(item);
@@ -33,7 +33,11 @@ PriorityQueue.prototype.enqueue = function (item: ABoardObj) {
       // bigest add to front
       if (size === -1) this.items.unshift(item);
       else if (this.items[size].rating >= item.rating) {
-        this.items.splice(++size, 0, item);
+        if (this.items[size].rating === item.rating) {
+          if (this.items[size].from.length > item.from.length)
+            this.items.splice(++size, 0, item);
+          else continue;
+        } else this.items.splice(++size, 0, item);
         break;
       }
     }
