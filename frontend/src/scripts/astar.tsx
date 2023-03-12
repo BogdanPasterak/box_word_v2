@@ -1,6 +1,7 @@
 import { ABoardObj } from "../models/aboard";
 import { BoardObj } from "../models/board";
 import { PriorityQueue } from "../models/priorityQueue";
+import { arr24 } from "./arr_24";
 import { winTest, generateStub, nextMoves } from "./scripts";
 import { unresolved } from "./unresolved";
 
@@ -234,7 +235,7 @@ export function openFile3() {
   let total = start;
 
   // array with used sets
-  const unres = unresolved;
+  const unres = unresolved.filter((x) => !arr24.includes(x));
 
   console.log("no used =", unres.length - index * pack);
 
