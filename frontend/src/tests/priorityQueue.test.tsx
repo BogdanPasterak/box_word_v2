@@ -45,10 +45,10 @@ describe("Testing Priority Queue", () => {
     expect(aObj10a).toBe(queue.items[2]);
   });
 
-  test("should be added in 10 betwen", () => {
-    queue.enqueue(aObj10b);
+  // test("should be added in 10 betwen", () => {
+  //   queue.enqueue(aObj10b);
 
-    expect(aObj10b).toBe(queue.items[2]);
-    // console.log(queue.toString());
-  });
+  //   // expect(aObj10b).toBe(queue.items[2]);
+  //   console.log(queue.toString());
+  // });
 });

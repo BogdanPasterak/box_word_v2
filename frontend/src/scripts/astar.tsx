@@ -240,21 +240,6 @@ export function openFile3() {
   console.log("no used =", unres.length - index * pack);
 
   for (let i = index * pack; i < unres.length; i++) {
-    // for (let b = 0; b < 15; b++) {
-    //   checked = find = 0;
-    //   if (b === a) continue;
-    //   for (let c = 0; c < 15; c++) {
-    //     if (c === a || c === b) continue;
-    //     for (let d = 0; d < 15; d++) {
-    //       if (d === a || d === b || d === c) continue;
-    //       board = "";
-    //       for (let i = 0; i < 15; i++) {
-    //         if (i === a) board += "A";
-    //         else if (i === b) board += "B";
-    //         else if (i === c) board += "C";
-    //         else if (i === d) board += "D";
-    //         else board += "*";
-    //       }
     board = unres[i];
     // if (!setsUsed.includes(board)) {
     //   checked++;
@@ -271,20 +256,14 @@ export function openFile3() {
           `"${board}","${answer.board}"` +
           `,${answer.from.length},${answer.from.toString()}`
       );
-      // } else {
-      //   console.log("OVER 27");
     }
-    // }
-    //     }
-    //   }
+
     now = Math.floor((Date.now() - start) / 1000);
     start = Date.now();
     console.log(
       `${i}, ${board} , time = ${now} s, from = ${count}, find = ${find}`
     );
     if (count >= pack) break;
-    // }
-    // console.log(`a = ${a} , count = ${count}`);
   }
   now = Math.floor((Date.now() - total) / 60000);
   console.log(`total time = ${now} min`);

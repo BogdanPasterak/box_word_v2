@@ -6,19 +6,21 @@ export function print(s: string) {
 }
 
 // generete random set with letters A,B,C,D
-export function generateStub(): BoardObj {
-  let temp: string[] = "*************** ".split("");
-  let index = 15;
+export function generateStub(b = "*************** "): BoardObj {
+  let temp: string[] = b.split("");
+  // console.log(b);
 
-  //random position of 4 letters
-  ["A", "B", "C", "D"].forEach((e) => {
-    do {
-      index = Math.floor(Math.random() * 15);
-    } while (!(temp[index] === "*"));
+  if (b === "*************** ") {
+    let index = 15;
+    //random position of 4 letters
+    ["A", "B", "C", "D"].forEach((e) => {
+      do {
+        index = Math.floor(Math.random() * 15);
+      } while (!(temp[index] === "*"));
 
-    temp[index] = e;
-  });
-
+      temp[index] = e;
+    });
+  }
   // connect to string add word and return
   return new BoardObj(temp.join(""), "ABCD");
 }

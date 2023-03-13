@@ -25,7 +25,7 @@ PriorityQueue.prototype.enqueue = function (item: ABoardObj) {
   // empty queue
   if (size < 0) this.items.push(item);
   // if last one is biger, add to end
-  else if (this.items[size].rating >= item.rating) this.items.push(item);
+  else if (this.items[size].rating > item.rating) this.items.push(item);
   // set on sorted position
   else
     while (size >= 0) {
@@ -33,12 +33,7 @@ PriorityQueue.prototype.enqueue = function (item: ABoardObj) {
       // bigest add to front
       if (size === -1) this.items.unshift(item);
       else if (this.items[size].rating >= item.rating) {
-        // if same compare number of steps (first bigest)
-        if (this.items[size].rating === item.rating) {
-          if (this.items[size].from.length < item.from.length)
-            this.items.splice(++size, 0, item);
-          else continue;
-        } else this.items.splice(++size, 0, item);
+        this.items.splice(++size, 0, item);
         break;
       }
     }

@@ -12,7 +12,7 @@ import { Expand } from "./models/expand";
 function App() {
   // starting seting
   const [ex, updateEx] = useState(
-    new Expand(generateStub(), Object.values(images))
+    new Expand(generateStub("ABD***C******** "), Object.values(images))
   );
   // const [tiles, updateTiles] = useState(tilesSet());
   const [welcome, setWelcome] = useState("Welcome");
