@@ -3,6 +3,7 @@ import { BoardObj } from "../models/board";
 import { PriorityQueue } from "../models/priorityQueue";
 import { arr24 } from "./arr_24";
 import { arr25 } from "./arr_25";
+import { arr26 } from "./arr_26";
 import { winTest, generateStub, nextMoves } from "./scripts";
 import { unresolved } from "./unresolved";
 
@@ -212,11 +213,11 @@ export function estimation2(obj: BoardObj) {
 // checked 12264, unchecked 23226
 export function openFile3() {
   // level 15 in 5 steps, together 10 hours
-  const level = 26;
+  const level = 27;
   // console.log(`========= LEVEL ${level} ============`);
   const abc = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ";
-  const index = 10; // next pack
-  const pack = 50;
+  const index = 0; // next pack
+  const pack = 1;
 
   // const part = allParts[index];
   console.log(`========= LEVEL ${level} ${abc[index]} ============`);
@@ -237,7 +238,7 @@ export function openFile3() {
 
   // array with used sets
   const unres = unresolved.filter(
-    (x) => !(arr24.includes(x) || arr25.includes(x))
+    (x) => !(arr24.includes(x) || arr25.includes(x) || arr26.includes(x))
   );
 
   console.log("no used =", unres.length - index * pack);
