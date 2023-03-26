@@ -1,6 +1,11 @@
 import bg from "./image/bg.jpg";
 import images from "./image";
-import { counting, generateStub, winTest } from "./scripts/scripts";
+import {
+  counting,
+  generateBoard,
+  generateStub,
+  winTest,
+} from "./scripts/scripts";
 import { bfsStart } from "./scripts/bfs";
 import { dfsStart, openFile2, unresolved } from "./scripts/dfs";
 import { aStart, openFile3 } from "./scripts/astar";
@@ -9,8 +14,10 @@ import { useState } from "react";
 import Box from "./components/Box";
 import { Expand } from "./models/expand";
 import { solutions } from "./assets/solutions";
+import { words } from "./assets/words";
 
 function App() {
+  const startLevel = 3;
   // starting seting
   const [ex, updateEx] = useState(
     new Expand(generateStub("ABD***C******** "), Object.values(images))
@@ -18,6 +25,7 @@ function App() {
   // const [tiles, updateTiles] = useState(tilesSet());
   const [welcome, setWelcome] = useState("Welcome");
   const [level, setLevel] = useState(5);
+  const [word, setWord] = useState("WORD");
 
   function handleClick(index: number, id: string): void {
     if (isNeighborSpace(index)) {
@@ -59,8 +67,10 @@ function App() {
     setLevel(v);
 
     let n = Math.floor(Math.random() * solutions[v].length);
-    let w = solutions[v][n];
-    updateEx(new Expand(generateStub(w), Object.values(images)));
+    let b = solutions[v][n];
+    let w = words[Math.floor(Math.random() * words.length)].toUpperCase();
+    setWord(w);
+    updateEx(new Expand(generateBoard(b, w), Object.values(images)));
   }
 
   return (
@@ -84,8 +94,8 @@ function App() {
           {Array(24)
             .fill(0)
             .map((_, i) => (
-              <option key={i + 3} value={i + 3}>
-                Level {i + 3}
+              <option key={i + startLevel} value={i + startLevel}>
+                Level {i + startLevel}
               </option>
             ))}
         </select>
@@ -108,7 +118,7 @@ function App() {
       </div>
       <div className="info" id="info">
         <span>Time 23:15</span>
-        <h2 className="word">W O R D</h2>
+        <h2 className="word">{word}</h2>
         <span>Moves - 27</span>
       </div>
       <div className="board" id="board">
