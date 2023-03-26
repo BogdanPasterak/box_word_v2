@@ -8,6 +8,7 @@ import { BoardObj } from "./models/board";
 import { useState } from "react";
 import Box from "./components/Box";
 import { Expand } from "./models/expand";
+import { solutions } from "./assets/solutions";
 
 function App() {
   // starting seting
@@ -16,22 +17,19 @@ function App() {
   );
   // const [tiles, updateTiles] = useState(tilesSet());
   const [welcome, setWelcome] = useState("Welcome");
+  const [level, setLevel] = useState(5);
 
   function handleClick(index: number, id: string): void {
     if (isNeighborSpace(index)) {
       updateEx(ex.move(index).copy());
-      // console.log(ex.toString());
-      // console.log(`view = [${ex.getView().toString()}]`);
+
       if (winTest(ex)) {
-        // console.log("WIN ------------");
         ex.word.split("").forEach((l) => {
           shake("m" + (ex.board.indexOf(l) + 10).toString());
         });
       }
     } else {
       shake(id);
-      // console.log("klik", index);
-      // console.log(box);
     }
   }
 
@@ -45,8 +43,6 @@ function App() {
 
   // check if space is neighbor
   function isNeighborSpace(index: number): boolean {
-    // console.log("spacja", ex.pos, " index", index);
-
     if (index > 3 && ex.pos === index - 4) return true;
     if (index % 4 > 0 && ex.pos === index - 1) return true;
     if (index % 4 < 3 && ex.pos === index + 1) return true;
@@ -56,6 +52,15 @@ function App() {
 
   function show(): void {
     console.log(ex.toString());
+  }
+
+  function levelChange(value: string) {
+    let v = Number.parseInt(value);
+    setLevel(v);
+
+    let n = Math.floor(Math.random() * solutions[v].length);
+    let w = solutions[v][n];
+    updateEx(new Expand(generateStub(w), Object.values(images)));
   }
 
   return (
@@ -69,6 +74,21 @@ function App() {
         <p className="welcome">{welcome}</p>
       </div>
       <div className="buttons" id="buttons">
+        <select
+          className="bt"
+          name="level"
+          id="level"
+          value={level}
+          onChange={(e) => levelChange(e.target.value)}
+        >
+          {Array(24)
+            .fill(0)
+            .map((_, i) => (
+              <option key={i + 3} value={i + 3}>
+                Level {i + 3}
+              </option>
+            ))}
+        </select>
         <button className="bt" onClick={show}>
           Click
         </button>
