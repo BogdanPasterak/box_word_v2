@@ -15,17 +15,21 @@ import Box from "./components/Box";
 import { Expand } from "./models/expand";
 import { solutions } from "./assets/solutions";
 import { words } from "./assets/words";
+import { Game } from "./models/game";
 
 function App() {
   const startLevel = 3;
   // starting seting
+  // current game
   const [ex, updateEx] = useState(
     new Expand(generateStub("ABD***C******** "), Object.values(images))
   );
-  // const [tiles, updateTiles] = useState(tilesSet());
-  const [welcome, setWelcome] = useState("Welcome");
-  const [level, setLevel] = useState(5);
-  const [word, setWord] = useState("WORD");
+  // rest of user game data
+  const [game, setGame] = useState(newGame());
+
+  function newGame(): Game {
+    return new Game("WORD", 5);
+  }
 
   function handleClick(index: number, id: string): void {
     if (isNeighborSpace(index)) {
@@ -64,12 +68,12 @@ function App() {
 
   function levelChange(value: string) {
     let v = Number.parseInt(value);
-    setLevel(v);
 
     let n = Math.floor(Math.random() * solutions[v].length);
     let b = solutions[v][n];
     let w = words[Math.floor(Math.random() * words.length)].toUpperCase();
-    setWord(w);
+
+    setGame(game.updateGame(w, v));
     updateEx(new Expand(generateBoard(b, w), Object.values(images)));
   }
 
@@ -81,14 +85,14 @@ function App() {
     >
       <div className="title" id="title">
         <h1>BOX WORD</h1>
-        <p className="welcome">{welcome}</p>
+        <p className="welcome">{game.person}</p>
       </div>
       <div className="buttons" id="buttons">
         <select
           className="bt"
           name="level"
           id="level"
-          value={level}
+          value={game.level}
           onChange={(e) => levelChange(e.target.value)}
         >
           {Array(24)
@@ -118,7 +122,7 @@ function App() {
       </div>
       <div className="info" id="info">
         <span>Time 23:15</span>
-        <h2 className="word">{word}</h2>
+        <h2 className="word">{game.word}</h2>
         <span>Moves - 27</span>
       </div>
       <div className="board" id="board">
