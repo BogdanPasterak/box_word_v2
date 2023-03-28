@@ -11,6 +11,7 @@ import { arr23 } from "./arr_23";
 import { arr24 } from "./arr_24";
 import { arr25 } from "./arr_25";
 import { arr26 } from "./arr_26";
+import { arr27 } from "./arr_27";
 
 export function dfs(obj: BoardObj): BoardObj {
   // starting element
