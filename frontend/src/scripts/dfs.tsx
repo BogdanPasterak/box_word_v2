@@ -8,6 +8,9 @@ import { arr20 } from "./arr_20";
 import { arr21 } from "./arr_21";
 import { arr22 } from "./arr_22";
 import { arr23 } from "./arr_23";
+import { arr24 } from "./arr_24";
+import { arr25 } from "./arr_25";
+import { arr26 } from "./arr_26";
 
 export function dfs(obj: BoardObj): BoardObj {
   // starting element
@@ -301,6 +304,10 @@ export function unresolved() {
     .concat(arr21)
     .concat(arr22)
     .concat(arr23)
+    .concat(arr24)
+    .concat(arr25)
+    .concat(arr26)
+    .concat(arr27)
     .sort();
   console.log("used =", setsUsed.length);
 
