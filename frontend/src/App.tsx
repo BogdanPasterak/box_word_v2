@@ -22,8 +22,9 @@ function App() {
   // starting seting
   // current game
   const [ex, updateEx] = useState(
-    new Expand(generateStub("ABD***C******** "), Object.values(images))
+    new Expand(generateBoard(solutions[5][0], "WORD"), Object.values(images))
   );
+
   // rest of user game data
   const [game, setGame] = useState(newGame());
 
