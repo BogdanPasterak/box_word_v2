@@ -25,6 +25,44 @@ export function generateStub(b = "*************** "): BoardObj {
   return new BoardObj(temp.join(""), "ABCD");
 }
 
+// generete random set with letters A,B,C,D
+export function generateBoard(b: string, w: string): BoardObj {
+  let temp: string[] = b.split("");
+  // console.log(b);
+
+  // word in space ABCD
+  let field = [
+    temp.indexOf("A"),
+    temp.indexOf("B"),
+    temp.indexOf("C"),
+    temp.indexOf("D"),
+  ];
+  field.forEach((f, i) => (temp[f] = w[i]));
+
+  // fill stars
+  let letters = [
+    ..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+      .split("")
+      .filter((x) => !(x === w[0] || x === w[1] || x === w[2] || x === w[3])),
+  ];
+  temp.forEach((l, i) => {
+    if (l === "*") temp[i] = letters[Math.floor(Math.random() * 22)];
+  });
+
+  // let index = 15;
+  // //random position of 4 letters
+  // w.split("").forEach((e) => {
+  //   do {
+  //     index = Math.floor(Math.random() * 15);
+  //   } while (!(temp[index] === "*"));
+
+  //   temp[index] = e;
+  // });
+
+  // connect to string add word and return
+  return new BoardObj(temp.join(""), w);
+}
+
 // test if board match word
 export function winTest(obj: Board | Expand): boolean {
   const b = obj instanceof Expand ? obj.getView() : obj.board;
