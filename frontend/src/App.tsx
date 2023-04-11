@@ -1,15 +1,9 @@
 import bg from "./image/bg.jpg";
 import images from "./image";
-import {
-  counting,
-  generateBoard,
-  generateStub,
-  winTest,
-} from "./scripts/scripts";
+import { counting, generateBoard, winTest } from "./scripts/scripts";
 import { bfsStart } from "./scripts/bfs";
-import { dfsStart, openFile2, unresolved } from "./scripts/dfs";
-import { aStart, openFile3 } from "./scripts/astar";
-import { BoardObj } from "./models/board";
+import { dfsStart, unresolved } from "./scripts/dfs";
+import { aStart, compare, openFile3 } from "./scripts/astar";
 import { useState } from "react";
 import Box from "./components/Box";
 import { Expand } from "./models/expand";
@@ -20,16 +14,17 @@ import { Game } from "./models/game";
 function App() {
   const startLevel = 3;
   // starting seting
-  // current game
-  const [ex, updateEx] = useState(
-    new Expand(generateBoard(solutions[5][0], "WORD"), Object.values(images))
-  );
 
   // rest of user game data
   const [game, setGame] = useState(newGame());
 
+  // current game
+  const [ex, updateEx] = useState(
+    new Expand(generateBoard(solutions[5][0], game.word), Object.values(images))
+  );
+
   function newGame(): Game {
-    return new Game("WORD", 5);
+    return new Game();
   }
 
   function handleClick(index: number, id: string): void {
@@ -105,7 +100,7 @@ function App() {
             ))}
         </select>
         <button className="bt" onClick={show}>
-          Click
+          New Board
         </button>
         <button className="bt" onClick={bfsStart}>
           BFS
@@ -119,7 +114,7 @@ function App() {
         <button className="bt" onClick={openFile3}>
           Save data
         </button>
-        <button onClick={unresolved}>Counting</button>
+        <button onClick={counting}>Counting</button>
       </div>
       <div className="info" id="info">
         <span>Time 23:15</span>

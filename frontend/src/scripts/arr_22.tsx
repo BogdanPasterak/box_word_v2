@@ -1,5 +1,4 @@
 export const arr22: string[] = [
-  "ABC*********D** ",
   "A**BD***C****** ",
   "A**BD******C*** ",
   "AD*B********C** ",

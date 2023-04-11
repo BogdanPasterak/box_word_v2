@@ -1,3 +1,5 @@
+import { words } from "../assets/words";
+
 export class Game {
   word: string;
   words: string[];
@@ -5,9 +7,16 @@ export class Game {
   usedLevels: number[][];
   person: string;
 
-  constructor(word: string, level: number) {
-    this.word = word;
-    this.level = level;
+  constructor();
+  constructor(word: string, level: number);
+  constructor(word?: string, level?: number) {
+    if (word) {
+      this.word = word;
+    } else {
+      this.word = words[0].toUpperCase();
+    }
+    // this.word = word ? word : "WORD";
+    this.level = level ? level : 5;
     this.person = "Welcome";
     this.words = [];
     this.usedLevels = Array(27).fill([]);

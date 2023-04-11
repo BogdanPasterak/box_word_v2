@@ -1,9 +1,8 @@
+import { log } from "console";
+import { solutions } from "../assets/solutions";
 import { ABoardObj } from "../models/aboard";
 import { BoardObj } from "../models/board";
 import { PriorityQueue } from "../models/priorityQueue";
-import { arr24 } from "./arr_24";
-import { arr25 } from "./arr_25";
-import { arr26 } from "./arr_26";
 import { winTest, generateStub, nextMoves } from "./scripts";
 import { unresolved } from "./unresolved";
 
@@ -63,7 +62,7 @@ export function a2(obj: BoardObj, max: number = 30): BoardObj {
   // initial queue with starting object
   let queue: PriorityQueue = new PriorityQueue(new ABoardObj(obj.copy(), 0));
   let now: ABoardObj;
-  let count = 0;
+  // let count = 0;
   let est: number;
 
   while (!queue.isEmpty()) {
@@ -153,30 +152,30 @@ function estimation(obj: BoardObj): number {
   return sum;
 }
 
-// find one off 4 neighborw if closer to 0
-function closeSmaller(orgin: number, dist: string): number {
-  if (dist[orgin] === "0") return orgin;
-  if (orgin > 3 && dist[orgin] > dist[orgin - 4]) return orgin - 4;
-  if (orgin % 4 && dist[orgin] > dist[orgin - 1]) return orgin - 1;
-  if (orgin % 4 < 3 && dist[orgin] > dist[orgin + 1]) return orgin + 1;
-  if (orgin < 12 && dist[orgin] > dist[orgin + 4]) return orgin + 4;
-  console.log("-------- error closeSmaller -----------------");
+// // find one off 4 neighborw if closer to 0
+// function closeSmaller(orgin: number, dist: string): number {
+//   if (dist[orgin] === "0") return orgin;
+//   if (orgin > 3 && dist[orgin] > dist[orgin - 4]) return orgin - 4;
+//   if (orgin % 4 && dist[orgin] > dist[orgin - 1]) return orgin - 1;
+//   if (orgin % 4 < 3 && dist[orgin] > dist[orgin + 1]) return orgin + 1;
+//   if (orgin < 12 && dist[orgin] > dist[orgin + 4]) return orgin + 4;
+//   console.log("-------- error closeSmaller -----------------");
 
-  return orgin;
-}
+//   return orgin;
+// }
 
-// number moves to set space on target place
-function stepsSpace(to: number, from: number): number {
-  if (to > from) {
-    let temp = to;
-    to = from;
-    from = temp;
-  }
-  from -= to;
-  let distance = (from % 4) + Math.floor(from / 4);
+// // number moves to set space on target place
+// function stepsSpace(to: number, from: number): number {
+//   if (to > from) {
+//     let temp = to;
+//     to = from;
+//     from = temp;
+//   }
+//   from -= to;
+//   let distance = (from % 4) + Math.floor(from / 4);
 
-  return distance + (distance - 1) * 5;
-}
+//   return distance + (distance - 1) * 5;
+// }
 
 // distance
 export function distance(a: number, b: number): number {
@@ -237,9 +236,7 @@ export function openFile3() {
   let total = start;
 
   // array with used sets
-  const unres = unresolved.filter(
-    (x) => !(arr24.includes(x) || arr25.includes(x) || arr26.includes(x))
-  );
+  const unres = unresolved;
 
   console.log("no used =", unres.length - index * pack);
 
@@ -286,4 +283,21 @@ export function openFile3() {
     document.body.removeChild(a);
     window.URL.revokeObjectURL(url);
   }, 0);
+}
+
+export function compare() {
+  let data = solutions;
+  let sum = 0;
+  for (let i = 0; i < data.length - 1; i++) {
+    console.log("arr", i, data[i].length);
+    sum += data[i].length;
+    for (let j = i + 1; j < data.length; j++) {
+      // console.log("compare to", j);
+      data[i].forEach((s) => {
+        if (data[j].includes(s)) console.log(i, j, s);
+      });
+    }
+  }
+  sum += data[27].length;
+  console.log(sum);
 }

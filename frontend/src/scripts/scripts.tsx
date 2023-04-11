@@ -1,3 +1,4 @@
+import { solutions } from "../assets/solutions";
 import { Board, BoardObj } from "../models/board";
 import { Expand } from "../models/expand";
 
@@ -125,6 +126,19 @@ export function nextMoves(obj: Board): number[] {
 
 export function counting() {
   let counter = 0;
+  let board = "";
+  let data = solutions;
+  let all: string[] = [];
+
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].includes(",ABC*********D** ")) console.log(i);
+    all.push(...data[i]);
+  }
+
+  console.log(all.length);
+  for (let i = 0; i < all.length - 1; i++) {
+    if (all[i] === all[i + 1]) console.log("Jest", all[i], all[i + 1], i);
+  }
 
   for (let a = 0; a < 15; a++) {
     for (let b = 0; b < 15; b++) {
@@ -133,10 +147,21 @@ export function counting() {
         if (a === c || b === c) continue;
         for (let d = 0; d < 15; d++) {
           if (a === d || b === d || c === d) continue;
+          board = "";
+          for (let i = 0; i < 15; i++) {
+            if (i === a) board += "A";
+            else if (i === b) board += "B";
+            else if (i === c) board += "C";
+            else if (i === d) board += "D";
+            else board += "*";
+          }
+          board += " ";
+          all.splice(all.indexOf(board), 1);
           counter++;
         }
       }
     }
   }
   console.log(counter);
+  console.log(all);
 }
