@@ -131,7 +131,7 @@ function App() {
         <button className="bt" onClick={openFile3}>
           Save data
         </button>
-        <button onClick={() => console.log(game)}>Counting</button>
+        <button onClick={counting}>Counting</button>
       </div>
       <div className="info" id="info">
         <span>
