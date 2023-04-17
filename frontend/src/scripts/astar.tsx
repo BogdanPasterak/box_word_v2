@@ -212,11 +212,11 @@ export function estimation2(obj: BoardObj) {
 // checked 12264, unchecked 23226
 export function openFile3() {
   // level 15 in 5 steps, together 10 hours
-  const level = 27;
+  const level = 28;
   // console.log(`========= LEVEL ${level} ============`);
   const abc = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ";
-  const index = 8; // next pack
-  const pack = 25;
+  const index = 1; // next pack
+  const pack = 10;
 
   // const part = allParts[index];
   console.log(`========= LEVEL ${level} ${abc[index]} ============`);
@@ -234,6 +234,9 @@ export function openFile3() {
   let now: number;
   let start = Date.now();
   let total = start;
+  let sec = 0;
+  let min = 0;
+  let text = "";
 
   // array with used sets
   const unres = unresolved;
@@ -260,9 +263,12 @@ export function openFile3() {
     }
 
     now = Math.floor((Date.now() - start) / 1000);
+    sec = now % 60;
+    min = (now - sec) / 60;
+    text = `${min}:${sec}, now = ${new Date().getHours()}:${new Date().getMinutes()}`;
     start = Date.now();
     console.log(
-      `${i}, ${board} , time = ${now} s, from = ${count}, find = ${find}`
+      `${i}, ${board} , time = ${text},  from = ${count}, find = ${find}`
     );
     if (count >= pack) break;
   }

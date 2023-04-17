@@ -114,7 +114,7 @@ function App() {
         <button className="bt" onClick={openFile3}>
           Save data
         </button>
-        <button onClick={counting}>Counting</button>
+        {/* <button onClick={counting}>Counting</button> */}
       </div>
       <div className="info" id="info">
         <span>Time 23:15</span>
