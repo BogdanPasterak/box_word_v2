@@ -62,9 +62,9 @@ function App() {
     return false;
   }
 
-  function show(): void {
-    console.log(ex.toString());
-  }
+  // function show(): void {
+  //   console.log(ex.toString());
+  // }
 
   function levelChange(value: string) {
     let l = Number.parseInt(value);
@@ -105,7 +105,7 @@ function App() {
           value={game.level}
           onChange={(e) => levelChange(e.target.value)}
         >
-          {Array(24)
+          {Array(29 - startLevel)
             .fill(0)
             .map((_, i) => (
               <option key={i + startLevel} value={i + startLevel}>
@@ -138,7 +138,7 @@ function App() {
           Time <span id="timeTick">{game.display}</span>
         </span>
         <h2 className="word">{game.word}</h2>
-        <span>Moves - 27</span>
+        <span>Moves - {ex.from.length}</span>
       </div>
       <div className="board" id="board">
         {/* 15 boxes */}
