@@ -1,16 +1,17 @@
 import bg from "./image/bg.jpg";
 import images from "./image";
 import { generateBoard, winTest } from "./scripts/scripts";
-import { bfsStart } from "./scripts/bfs";
+// import { bfsStart } from "./scripts/bfs";
 import { dfsStart } from "./scripts/dfs";
 import { aStart, openFile3 } from "./scripts/astar";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Box from "./components/Box";
 import { Expand } from "./models/expand";
 import { Game } from "./models/game";
 
 function App() {
   let startLevel = 3;
+  const ref = useRef(null);
 
   // rest of user game data
   const [game, setGame] = useState(new Game());
@@ -23,20 +24,23 @@ function App() {
   function handleClick(index: number, id: string): void {
     if (!game.run) {
       game.run = true;
-      game.time = new Date();
+      game.time = new Date().getTime();
       game.interval = setInterval(updateTime, 1000);
     }
-    if (isNeighborSpace(index)) {
-      updateEx(ex.move(index).copy());
-      if (winTest(ex)) {
-        game.milisec = new Date().getTime() - game.time.getTime();
-        clearInterval(game.interval);
-        ex.word.split("").forEach((l) => {
-          shake("m" + (ex.board.indexOf(l) + 10).toString(), true);
-        });
+    if (!game.pause) {
+      if (isNeighborSpace(index)) {
+        updateEx(ex.move(index).copy());
+        if (winTest(ex)) {
+          let ms = new Date().getTime() - game.time;
+          game.milisec = ":" + (ms < 10) ? "0" + ms : ms.toString();
+          clearInterval(game.interval);
+          ex.word.split("").forEach((l) => {
+            shake("m" + (ex.board.indexOf(l) + 10).toString(), true);
+          });
+        }
+      } else {
+        shake(id);
       }
-    } else {
-      shake(id);
     }
   }
 
@@ -67,6 +71,7 @@ function App() {
   // }
 
   function levelChange(value: string) {
+    unpause();
     let l = Number.parseInt(value);
 
     document.getElementById("timeTick")!.textContent = "00:00";
@@ -85,6 +90,31 @@ function App() {
         let box = document.querySelector(`#${e}`);
         box?.classList.remove("color-red");
       });
+  }
+
+  function pause() {
+    const button: any = ref.current;
+    if (button.textContent === "Pause") {
+      game.pause = true;
+      game.timePause = new Date().getTime();
+      clearInterval(game.interval);
+
+      button.textContent = "Continue";
+      document.getElementById("board")!.classList.add("blur");
+    } else {
+      game.interval = setInterval(updateTime, 1000);
+      unpause();
+    }
+  }
+
+  function unpause() {
+    const button: any = ref.current;
+
+    game.pause = false;
+    // offset time
+    game.time -= new Date().getTime() - game.timePause;
+    button.textContent = "Pause";
+    document.getElementById("board")!.classList.remove("blur");
   }
 
   return (
@@ -119,8 +149,8 @@ function App() {
         >
           New Board
         </button>
-        <button className="bt" onClick={bfsStart}>
-          BFS
+        <button ref={ref} className="bt" onClick={pause}>
+          Pause
         </button>
         <button className="bt" onClick={dfsStart}>
           DFS
