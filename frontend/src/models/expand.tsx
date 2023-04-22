@@ -3,12 +3,20 @@ import { BoardObj } from "./board";
 export class Expand extends BoardObj {
   bg: string[];
   order: number[];
+  forward: number[];
 
-  constructor(obj: BoardObj, images: string[], order?: number[]) {
+  constructor(
+    obj: BoardObj,
+    images: string[],
+    order?: number[],
+    forward?: number[]
+  ) {
     super(obj);
     this.bg = images;
     if (order) this.order = order;
     else this.order = Array.from(Array(16).keys());
+    if (forward) this.forward = forward;
+    else this.forward = [];
   }
 }
 
@@ -16,23 +24,21 @@ export interface Expand {
   copy: () => Expand;
   move: (p: number) => Expand;
   back: () => Expand;
+  ahead: () => number;
   toString: () => string;
   getView: () => string;
 }
 
 Expand.prototype.copy = function () {
-  return new Expand(new BoardObj(this), [...this.bg], [...this.order]);
+  return new Expand(
+    new BoardObj(this),
+    [...this.bg],
+    [...this.order],
+    [...this.forward]
+  );
 };
 
 Expand.prototype.move = function (p: number) {
-  // let swap = this.board[p];
-
-  // // swap two element [space and element at index p]
-  // this.board = this.board
-  //   .split("")
-  //   .map((e, i) => (i === this.pos ? swap : i === p ? " " : e))
-  //   .join("");
-
   // store move
   this.from.push(this.pos);
 
@@ -51,15 +57,22 @@ Expand.prototype.back = function () {
   if (this.from.length) {
     let old = this.from.pop() || -1;
 
+    // store for forward
+    this.forward.push(this.pos);
+
     // swap backgrount number
-    let space = this.bg[this.pos];
-    this.bg[this.pos] = this.bg[old];
-    this.bg[old] = space;
+    let space = this.order[this.pos];
+    this.order[this.pos] = this.order[old];
+    this.order[old] = space;
 
     // new positoion space
     this.pos = old;
   }
   return this;
+};
+
+Expand.prototype.ahead = function () {
+  return this.forward.pop() || -1;
 };
 
 Expand.prototype.toString = function () {
@@ -77,6 +90,7 @@ Expand.prototype.toString = function () {
   s += `\tfrom  - [${this.from.toString()}]`;
   s += `\nbg - [${this.bg[15]}]`;
   s += `\norder - [${this.order.toString()}]`;
+  s += `\nfoward - [${this.forward.toString()}]`;
 
   return s;
 };

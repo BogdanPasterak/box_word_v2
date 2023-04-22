@@ -17,6 +17,7 @@ export class Game {
   run = false;
   interval: NodeJS.Timer | undefined;
   pause = false;
+  win = false;
 
   constructor() {
     // Random word
@@ -37,6 +38,8 @@ export class Game {
     clearInterval(this.interval);
     this.sec = 0;
     this.display = "00:00";
+    this.milisec = "";
+    this.win = false;
     return this;
   }
 

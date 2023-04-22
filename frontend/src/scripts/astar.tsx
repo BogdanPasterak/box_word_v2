@@ -1,4 +1,3 @@
-import { log } from "console";
 import { solutions } from "../assets/solutions";
 import { ABoardObj } from "../models/aboard";
 import { BoardObj } from "../models/board";

@@ -2,8 +2,8 @@ import bg from "./image/bg.jpg";
 import images from "./image";
 import { generateBoard, winTest } from "./scripts/scripts";
 // import { bfsStart } from "./scripts/bfs";
-import { dfsStart } from "./scripts/dfs";
-import { aStart, openFile3 } from "./scripts/astar";
+// import { dfsStart } from "./scripts/dfs";
+// import { aStart, openFile3 } from "./scripts/astar";
 import { useRef, useState } from "react";
 import Box from "./components/Box";
 import { Expand } from "./models/expand";
@@ -27,12 +27,14 @@ function App() {
       game.time = new Date().getTime();
       game.interval = setInterval(updateTime, 1000);
     }
-    if (!game.pause) {
+    if (!game.pause && !game.win) {
       if (isNeighborSpace(index)) {
         updateEx(ex.move(index).copy());
         if (winTest(ex)) {
-          let ms = new Date().getTime() - game.time;
-          game.milisec = ":" + (ms < 10) ? "0" + ms : ms.toString();
+          // win
+          let ms = (new Date().getTime() - game.time) % 1000;
+          game.milisec = ":" + String(ms).padStart(3, "0");
+          game.win = true;
           clearInterval(game.interval);
           ex.word.split("").forEach((l) => {
             shake("m" + (ex.board.indexOf(l) + 10).toString(), true);
@@ -66,9 +68,9 @@ function App() {
     return false;
   }
 
-  // function show(): void {
-  //   console.log(ex.toString());
-  // }
+  function show(): void {
+    console.log(ex.toString());
+  }
 
   function levelChange(value: string) {
     unpause();
@@ -94,16 +96,18 @@ function App() {
 
   function pause() {
     const button: any = ref.current;
-    if (button.textContent === "Pause") {
-      game.pause = true;
-      game.timePause = new Date().getTime();
-      clearInterval(game.interval);
+    if (!game.win) {
+      if (button.textContent === "Pause") {
+        game.pause = true;
+        game.timePause = new Date().getTime();
+        clearInterval(game.interval);
 
-      button.textContent = "Continue";
-      document.getElementById("board")!.classList.add("blur");
-    } else {
-      game.interval = setInterval(updateTime, 1000);
-      unpause();
+        button.textContent = "Continue";
+        document.getElementById("board")!.classList.add("blur");
+      } else {
+        game.interval = setInterval(updateTime, 1000);
+        unpause();
+      }
     }
   }
 
@@ -115,6 +119,17 @@ function App() {
     game.time -= new Date().getTime() - game.timePause;
     button.textContent = "Pause";
     document.getElementById("board")!.classList.remove("blur");
+  }
+
+  function back() {
+    updateEx(ex.back().copy());
+  }
+
+  function ahead() {
+    let next = ex.ahead();
+    if (next > -1) {
+      updateEx(ex.move(next).copy());
+    }
   }
 
   return (
@@ -152,20 +167,21 @@ function App() {
         <button ref={ref} className="bt" onClick={pause}>
           Pause
         </button>
-        <button className="bt" onClick={dfsStart}>
-          DFS
+        <button className="bt" onClick={back}>
+          Back
         </button>
-        <button className="bt" onClick={aStart}>
-          A *
+        <button className="bt" onClick={ahead}>
+          Forward
         </button>
-        <button className="bt" onClick={openFile3}>
-          Save data
+        <button className="bt" onClick={show}>
+          Show
         </button>
         {/* <button onClick={counting}>Counting</button> */}
       </div>
       <div className="info" id="info">
         <span>
           Time <span id="timeTick">{game.display}</span>
+          <span className="color-red">{game.milisec}</span>
         </span>
         <h2 className="word">{game.word}</h2>
         <span>Moves - {ex.from.length}</span>
