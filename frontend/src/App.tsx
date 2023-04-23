@@ -13,6 +13,40 @@ function App() {
   let startLevel = 3;
   const ref = useRef(null);
 
+  // use session for run demo
+  let demo = getDemo();
+
+  // get and set status of demo
+  function getDemo() {
+    // if exist in session
+    const d = window.sessionStorage.getItem("demoState");
+    if (d) return d;
+    // else create with value 'wait'
+    else window.sessionStorage.setItem("demoState", "wait");
+    // 5 sec start demo
+    setTimeout(startDemo, 5000);
+    return "wait";
+  }
+
+  function setDemo(value: string) {
+    window.sessionStorage.setItem("demoState", value);
+  }
+
+  function startDemo() {
+    if (getDemo() === "wait") {
+      setDemo("run");
+      stepDemo(0);
+    }
+  }
+
+  // step demo if is run
+  function stepDemo(step: number) {
+    if (getDemo() === "run") {
+      console.log("step", step);
+      setTimeout(() => stepDemo((step + 1) % 15), 5000);
+    }
+  }
+
   // rest of user game data
   const [game, setGame] = useState(new Game());
 
@@ -22,26 +56,35 @@ function App() {
   );
 
   function handleClick(index: number, id: string): void {
-    if (!game.run && !game.pause) {
-      game.run = true;
-      game.time = new Date().getTime();
-      game.interval = setInterval(updateTime, 1000);
-    }
-    if (!game.pause && !game.win) {
-      if (isNeighborSpace(index)) {
-        updateEx(ex.move(index).copy());
-        if (winTest(ex)) {
-          // win
-          let ms = (new Date().getTime() - game.time) % 1000;
-          game.milisec = ":" + String(ms).padStart(3, "0");
-          game.win = true;
-          clearInterval(game.interval);
-          ex.word.split("").forEach((l) => {
-            shake("m" + (ex.board.indexOf(l) + 10).toString(), true);
-          });
+    if (getDemo() === "run") {
+      setDemo("stop");
+      // back to start seting
+      updateEx(
+        new Expand(generateBoard(game.board, game.word), Object.values(images))
+      );
+    } else {
+      if (getDemo() === "wait") setDemo("stop");
+      if (!game.run && !game.pause) {
+        game.run = true;
+        game.time = new Date().getTime();
+        game.interval = setInterval(updateTime, 1000);
+      }
+      if (!game.pause && !game.win) {
+        if (isNeighborSpace(index)) {
+          updateEx(ex.move(index).copy());
+          if (winTest(ex)) {
+            // win
+            let ms = (new Date().getTime() - game.time) % 1000;
+            game.milisec = ":" + String(ms).padStart(3, "0");
+            game.win = true;
+            clearInterval(game.interval);
+            ex.word.split("").forEach((l) => {
+              shake("m" + (ex.board.indexOf(l) + 10).toString(), true);
+            });
+          }
+        } else {
+          shake(id);
         }
-      } else {
-        shake(id);
       }
     }
   }
