@@ -22,7 +22,7 @@ function App() {
   );
 
   function handleClick(index: number, id: string): void {
-    if (!game.run) {
+    if (!game.run && !game.pause) {
       game.run = true;
       game.time = new Date().getTime();
       game.interval = setInterval(updateTime, 1000);
@@ -70,6 +70,7 @@ function App() {
 
   function show(): void {
     console.log(ex.toString());
+    console.log(game);
   }
 
   function levelChange(value: string) {
@@ -105,7 +106,7 @@ function App() {
         button.textContent = "Continue";
         document.getElementById("board")!.classList.add("blur");
       } else {
-        game.interval = setInterval(updateTime, 1000);
+        if (game.run) game.interval = setInterval(updateTime, 1000);
         unpause();
       }
     }
