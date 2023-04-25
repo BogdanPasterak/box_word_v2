@@ -8,6 +8,9 @@ import { useRef, useState } from "react";
 import Box from "./components/Box";
 import { Expand } from "./models/expand";
 import { Game } from "./models/game";
+import { dfsTest } from "./scripts/dfs";
+import { bfsTest } from "./scripts/bfs";
+import { aTest } from "./scripts/astar";
 
 function App() {
   let startLevel = 3;
@@ -176,6 +179,8 @@ function App() {
     }
   }
 
+  const t = "**AC***D****B** ";
+
   return (
     <div
       className="procent"
@@ -219,6 +224,15 @@ function App() {
         </button>
         <button className="bt" onClick={show}>
           Show
+        </button>
+        <button className="bt" onClick={() => dfsTest(t)}>
+          DFS
+        </button>
+        <button className="bt" onClick={() => bfsTest(t)}>
+          BFS
+        </button>
+        <button className="bt" onClick={() => aTest(t)}>
+          A*
         </button>
         {/* <button onClick={counting}>Counting</button> */}
       </div>

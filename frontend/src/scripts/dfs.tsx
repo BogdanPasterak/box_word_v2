@@ -20,7 +20,7 @@ export function dfs(obj: BoardObj): BoardObj {
   // let index = 0;
   // let steps = [];
   // let count = 0;
-  // let start = Date.now();
+  let start = Date.now();
   // let temp = 0;
   // let now = 0;
 
@@ -48,7 +48,7 @@ export function dfs(obj: BoardObj): BoardObj {
       });
     }
     if (winTest(current)) {
-      // console.log(Math.floor((Date.now() - start) / 1000) + " secounds");
+      // console.log(new Date(Date.now() - start).toJSON().substring(8));
       break;
     }
   }
@@ -354,4 +354,23 @@ export function unresolved() {
     document.body.removeChild(a);
     window.URL.revokeObjectURL(url);
   }, 0);
+}
+
+export function dfsTest(set: string) {
+  let obj = generateStub(set);
+
+  console.log("============== START ================");
+  console.log("==============  DFS  ================");
+  console.log(obj.toString());
+  let start = Date.now();
+
+  obj = dfs(obj);
+
+  console.log(
+    "Time -",
+    new Date(Date.now() - start).toJSON().substring(11, 23),
+    " h:min:sec.milisec"
+  );
+  console.log("============== STOP ================");
+  console.log(obj.toString());
 }
