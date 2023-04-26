@@ -1,4 +1,3 @@
-import { log } from "console";
 import { solutions } from "../assets/solutions";
 import { ABoardObj } from "../models/aboard";
 import { BoardObj } from "../models/board";
@@ -215,7 +214,7 @@ export function openFile3() {
   const level = 28;
   // console.log(`========= LEVEL ${level} ============`);
   const abc = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ";
-  const index = 4; // next pack
+  const index = 6; // next pack
   const pack = 10;
 
   // const part = allParts[index];
