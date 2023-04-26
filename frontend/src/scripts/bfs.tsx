@@ -63,3 +63,22 @@ export function bfsStart() {
   console.log("============== STOP ================");
   console.log(obj.toString());
 }
+
+export function bfsTest(set: string) {
+  let obj = generateStub(set);
+
+  console.log("============== START ================");
+  console.log("==============  BFS  ================");
+  console.log(obj.toString());
+  let start = Date.now();
+
+  obj = bfs(obj);
+
+  console.log(
+    "Time -",
+    new Date(Date.now() - start).toJSON().substring(11, 23),
+    " h:min:sec.milisec"
+  );
+  console.log("============== STOP ================");
+  console.log(obj.toString());
+}

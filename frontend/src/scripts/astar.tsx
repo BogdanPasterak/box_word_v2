@@ -55,7 +55,7 @@ export function a(obj: BoardObj): BoardObj {
 }
 
 // A * algorythm
-export function a2(obj: BoardObj, max: number = 30): BoardObj {
+export function a2(obj: BoardObj, max: number = 29): BoardObj {
   // starting element
   let current: BoardObj = obj.copy();
   // initial queue with starting object
@@ -305,4 +305,23 @@ export function compare() {
   }
   sum += data[27].length;
   console.log(sum);
+}
+
+export function aTest(set: string) {
+  let obj = generateStub(set);
+
+  console.log("============== START ================");
+  console.log("==============   A*  ================");
+  console.log(obj.toString());
+  let start = Date.now();
+
+  obj = a2(obj);
+
+  console.log(
+    "Time -",
+    new Date(Date.now() - start).toJSON().substring(11, 23),
+    " h:min:sec.milisec"
+  );
+  console.log("============== STOP ================");
+  console.log(obj.toString());
 }

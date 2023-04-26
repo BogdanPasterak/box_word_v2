@@ -112,6 +112,10 @@ body {
   top: 1px;
 }
 
+.blur {
+  filter: blur(16px);
+}
+
 .shakeit {
   animation: 0.4s 1 none shake;
 }

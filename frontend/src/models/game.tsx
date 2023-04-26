@@ -9,12 +9,15 @@ export class Game {
   person: string;
   board = "";
   end = false;
-  time: Date = new Date();
+  time: number = new Date().getTime();
+  timePause = 0;
   display = "00:00";
   sec = 0;
-  milisec = 0;
+  milisec = "";
   run = false;
   interval: NodeJS.Timer | undefined;
+  pause = false;
+  win = false;
 
   constructor() {
     // Random word
@@ -30,11 +33,13 @@ export class Game {
     this.getRandomWord();
     this.getRandomBoard();
     this.end = false;
-    this.time = new Date();
+    this.time = new Date().getTime();
     this.run = false;
     clearInterval(this.interval);
     this.sec = 0;
     this.display = "00:00";
+    this.milisec = "";
+    this.win = false;
     return this;
   }
 
