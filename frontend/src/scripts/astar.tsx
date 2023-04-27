@@ -61,33 +61,23 @@ export function a2(obj: BoardObj, max: number = 29): BoardObj {
   // initial queue with starting object
   let queue: PriorityQueue = new PriorityQueue(new ABoardObj(obj.copy(), 0));
   let now: ABoardObj;
-  // let count = 0;
   let est: number;
 
   while (!queue.isEmpty()) {
     now = queue.dequeue();
     // win
     if (winTest(now)) return now;
-    // if (++count > 400000) {
-    //   console.log("========== BREAK ===========");
-    //   console.log("Queue =", queue.items.length);
-    //   current = now;
-    //   break;
-    // }
-
-    // console.log(now.toString());
 
     // eslint-disable-next-line no-loop-func
     nextMoves(now).forEach((p) => {
       // console.log("moves", p);
       now.move(p);
       est = estimation2(now) + now.from.length;
+      // f(x) = h(x)      +    g(x)
       if (est <= max) queue.enqueue(new ABoardObj(now, est));
       now.back();
     });
   }
-
-  // console.log("count", count);
 
   return current;
 }

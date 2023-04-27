@@ -179,7 +179,11 @@ function App() {
     }
   }
 
-  const t = "**AC***D****B** ";
+  const t = "****D***C****BA "; // 24
+  // const t = "**AC***D****B** "; // 22
+  // const t = "A**C****D*B**** "; // 20
+  // const t = "A*B*D******C*** "; // 18
+  // const t = "ABC******D***** "; // 15
 
   return (
     <div

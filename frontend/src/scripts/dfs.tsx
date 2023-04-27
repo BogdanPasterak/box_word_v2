@@ -17,26 +17,12 @@ export function dfs(obj: BoardObj): BoardObj {
   // starting element
   let current: BoardObj = obj.copy();
   let stack: BoardObj[];
-  // let index = 0;
-  // let steps = [];
-  // let count = 0;
   let start = Date.now();
-  // let temp = 0;
-  // let now = 0;
 
   // deeps level limit
   for (let l = 0; l < 26; l++) {
-    // if (l > 12) {
-    //   now = Date.now() - start;
-    //   console.log(`Level - ${l} , mili secound - ${now - temp}`);
-    //   temp = now;
-    // }
-    // steps.push({ index: l, stop: Date.now() });
-
     stack = [obj.copy()];
     while (stack.length) {
-      // log for show work
-      // if (!(++count % 5000000)) console.log(Date.now() - start);
       current = stack.pop()!;
       // if over deeps
       if (current.from.length > l) continue;
@@ -48,14 +34,9 @@ export function dfs(obj: BoardObj): BoardObj {
       });
     }
     if (winTest(current)) {
-      // console.log(new Date(Date.now() - start).toJSON().substring(8));
       break;
     }
   }
-  // steps.map((e) => (e.stop = (e.stop - start) / 1000));
-  // steps.map((e) => console.log(e));
-
-  // console.log(`--- steps = ${count}`);
 
   return current;
 }
