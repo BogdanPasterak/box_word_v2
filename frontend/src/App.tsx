@@ -226,10 +226,10 @@ function App() {
         <button className="bt" onClick={ahead}>
           Forward
         </button>
-        <button className="bt" onClick={show}>
+        {/* <button className="bt" onClick={show}>
           Show
-        </button>
-        <button className="bt" onClick={() => dfsTest(t)}>
+        </button> */}
+        {/* <button className="bt" onClick={() => dfsTest(t)}>
           DFS
         </button>
         <button className="bt" onClick={() => bfsTest(t)}>
@@ -237,7 +237,7 @@ function App() {
         </button>
         <button className="bt" onClick={() => aTest(t)}>
           A*
-        </button>
+        </button> */}
         {/* <button onClick={counting}>Counting</button> */}
       </div>
       <div className="info" id="info">
