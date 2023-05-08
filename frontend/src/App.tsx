@@ -3,14 +3,14 @@ import images from "./image";
 import { generateBoard, winTest } from "./scripts/scripts";
 // import { bfsStart } from "./scripts/bfs";
 // import { dfsStart } from "./scripts/dfs";
-// import { aStart, openFile3 } from "./scripts/astar";
+import { aStart, openFile3 } from "./scripts/astar";
 import { useRef, useState } from "react";
 import Box from "./components/Box";
 import { Expand } from "./models/expand";
 import { Game } from "./models/game";
-import { dfsTest } from "./scripts/dfs";
-import { bfsTest } from "./scripts/bfs";
-import { aTest } from "./scripts/astar";
+// import { dfsTest } from "./scripts/dfs";
+// import { bfsTest } from "./scripts/bfs";
+// import { aTest } from "./scripts/astar";
 
 function App() {
   let startLevel = 3;
@@ -238,7 +238,9 @@ function App() {
         <button className="bt" onClick={() => aTest(t)}>
           A*
         </button> */}
-        {/* <button onClick={counting}>Counting</button> */}
+        <button className="bt" onClick={openFile3}>
+          Save
+        </button>
       </div>
       <div className="info" id="info">
         <span>
