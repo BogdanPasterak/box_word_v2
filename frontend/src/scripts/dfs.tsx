@@ -12,6 +12,7 @@ import { arr24 } from "./arr_24";
 import { arr25 } from "./arr_25";
 import { arr26 } from "./arr_26";
 import { arr27 } from "./arr_27";
+import { arr28 } from "./arr_28";
 
 export function dfs(obj: BoardObj): BoardObj {
   // starting element
@@ -264,7 +265,7 @@ export function unresolved() {
   // const part = allParts[index];
   console.log(`========= generate unresolved sets ============`);
 
-  const filename = `unsolved.tsx`;
+  const filename = `unresolved.tsx`;
   const type = "text/plain";
 
   let data = ["export const unresolved: string[] = [\n"];
@@ -290,6 +291,7 @@ export function unresolved() {
     .concat(arr25)
     .concat(arr26)
     .concat(arr27)
+    .concat(arr28)
     .sort();
   console.log("used =", setsUsed.length);
 
