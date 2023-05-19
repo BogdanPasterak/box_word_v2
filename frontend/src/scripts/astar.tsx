@@ -201,11 +201,11 @@ export function estimation2(obj: BoardObj) {
 // checked 12264, unchecked 23226
 export function openFile3() {
   // level 15 in 5 steps, together 10 hours
-  const level = 29;
+  const level = 30;
   // console.log(`========= LEVEL ${level} ============`);
   const abc = "abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ";
   const index = 0; // next pack
-  const pack = 1;
+  const pack = 5;
 
   // const part = allParts[index];
   console.log(`========= LEVEL ${level} ${abc[index]} ============`);
