@@ -13,6 +13,7 @@ import { arr25 } from "./arr_25";
 import { arr26 } from "./arr_26";
 import { arr27 } from "./arr_27";
 import { arr28 } from "./arr_28";
+import { arr29 } from "./arr_29";
 
 export function dfs(obj: BoardObj): BoardObj {
   // starting element
@@ -292,6 +293,7 @@ export function unresolved() {
     .concat(arr26)
     .concat(arr27)
     .concat(arr28)
+    .concat(arr29)
     .sort();
   console.log("used =", setsUsed.length);
 

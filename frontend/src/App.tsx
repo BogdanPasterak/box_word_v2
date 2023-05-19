@@ -8,6 +8,7 @@ import { useRef, useState } from "react";
 import Box from "./components/Box";
 import { Expand } from "./models/expand";
 import { Game } from "./models/game";
+import { unresolved } from "./scripts/dfs";
 // import { dfsTest } from "./scripts/dfs";
 // import { bfsTest } from "./scripts/bfs";
 // import { aTest } from "./scripts/astar";
@@ -238,7 +239,7 @@ function App() {
         <button className="bt" onClick={() => aTest(t)}>
           A*
         </button> */}
-        <button className="bt" onClick={openFile3}>
+        <button className="bt" onClick={unresolved}>
           Save
         </button>
       </div>

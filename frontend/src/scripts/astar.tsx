@@ -167,7 +167,7 @@ function estimation(obj: BoardObj): number {
 // }
 
 // distance
-function distance(a: number, b: number): number {
+export function distance(a: number, b: number): number {
   return Math.abs((a % 4) - (b % 4)) + Math.abs(~~(a / 4) - ~~(b / 4));
 }
 
