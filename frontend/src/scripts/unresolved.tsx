@@ -1,14 +1,1 @@
-export const unresolved: string[] = [
-  "D**C***A****B** ",
-  "C***D******A**B ",
-  "DC*********A**B ",
-  "D*C********A**B ",
-  "D***C******A**B ",
-  "D*******C**A**B ",
-  "D**B********CA* ",
-  "CD*********B**A ",
-  "DC*********B**A ",
-  "D*C********B**A ",
-  "D***C******B**A ",
-  "D*******C**B**A ",
-];
+export const unresolved: string[] = ["DC*********A**B ", "D***C******B**A "];

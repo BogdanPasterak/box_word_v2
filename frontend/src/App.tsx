@@ -239,7 +239,7 @@ function App() {
         <button className="bt" onClick={() => aTest(t)}>
           A*
         </button> */}
-        <button className="bt" onClick={unresolved}>
+        <button className="bt" onClick={openFile3}>
           Save
         </button>
       </div>
