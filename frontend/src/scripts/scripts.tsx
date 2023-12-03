@@ -107,6 +107,20 @@ export function winTest(obj: Board | Expand): boolean {
   return false;
 }
 
+export function winTestOne(obj: Expand): boolean {
+  switch (obj.winPos) {
+    case 0: // first test
+      break;
+
+    case 1: // \
+      break;
+
+    default:
+      break;
+  }
+
+  return false;
+}
 export function nextMoves(obj: Board): number[] {
   let next = [];
 
