@@ -4,12 +4,14 @@ export class Expand extends BoardObj {
   bg: string[];
   order: number[];
   forward: number[];
+  winPos: number;
 
   constructor(
     obj: BoardObj,
     images: string[],
     order?: number[],
-    forward?: number[]
+    forward?: number[],
+    winPos?: number
   ) {
     super(obj);
     this.bg = images;
@@ -17,6 +19,8 @@ export class Expand extends BoardObj {
     else this.order = Array.from(Array(16).keys());
     if (forward) this.forward = forward;
     else this.forward = [];
+    if (winPos) this.winPos = winPos;
+    else this.winPos = 0;
   }
 }
 
@@ -34,7 +38,8 @@ Expand.prototype.copy = function () {
     new BoardObj(this),
     [...this.bg],
     [...this.order],
-    [...this.forward]
+    [...this.forward],
+    this.winPos
   );
 };
 
