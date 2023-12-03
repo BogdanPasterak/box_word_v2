@@ -1,5 +1,5 @@
 export const arr17: string[] = [
-  ",ABC*********D** ",
+  "ABC*********D** ",
   "ABD*****C****** ",
   "AB*D****C****** ",
   "ABD*********C** ",

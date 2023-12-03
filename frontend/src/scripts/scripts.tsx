@@ -1,30 +1,72 @@
+import { solutions } from "../assets/solutions";
 import { Board, BoardObj } from "../models/board";
+import { Expand } from "../models/expand";
 
 export function print(s: string) {
   console.log("Bogdan", s);
 }
 
 // generete random set with letters A,B,C,D
-export function generateStub(): BoardObj {
-  let temp: string[] = "*************** ".split("");
-  let index = 15;
+export function generateStub(b = "*************** "): BoardObj {
+  let temp: string[] = b.split("");
+  // console.log(b);
 
-  //random position of 4 letters
-  ["A", "B", "C", "D"].forEach((e) => {
-    do {
-      index = Math.floor(Math.random() * 15);
-    } while (!(temp[index] === "*"));
+  if (b === "*************** ") {
+    let index = 15;
+    //random position of 4 letters
+    ["A", "B", "C", "D"].forEach((e) => {
+      do {
+        index = Math.floor(Math.random() * 15);
+      } while (!(temp[index] === "*"));
 
-    temp[index] = e;
-  });
-
+      temp[index] = e;
+    });
+  }
   // connect to string add word and return
   return new BoardObj(temp.join(""), "ABCD");
 }
 
+// generete random set with letters A,B,C,D
+export function generateBoard(b: string, w: string): BoardObj {
+  let temp: string[] = b.split("");
+  // console.log(b);
+
+  // word in space ABCD
+  let field = [
+    temp.indexOf("A"),
+    temp.indexOf("B"),
+    temp.indexOf("C"),
+    temp.indexOf("D"),
+  ];
+  field.forEach((f, i) => (temp[f] = w[i]));
+
+  // fill stars
+  let letters = [
+    ..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+      .split("")
+      .filter((x) => !(x === w[0] || x === w[1] || x === w[2] || x === w[3])),
+  ];
+  temp.forEach((l, i) => {
+    if (l === "*") temp[i] = letters[Math.floor(Math.random() * 22)];
+  });
+
+  // let index = 15;
+  // //random position of 4 letters
+  // w.split("").forEach((e) => {
+  //   do {
+  //     index = Math.floor(Math.random() * 15);
+  //   } while (!(temp[index] === "*"));
+
+  //   temp[index] = e;
+  // });
+
+  // connect to string add word and return
+  return new BoardObj(temp.join(""), w);
+}
+
 // test if board match word
-export function winTest(obj: Board): boolean {
-  const b = obj.board;
+export function winTest(obj: Board | Expand): boolean {
+  const b = obj instanceof Expand ? obj.getView() : obj.board;
   const word = obj.word;
 
   // first position top left corner - 3 posible
@@ -65,6 +107,20 @@ export function winTest(obj: Board): boolean {
   return false;
 }
 
+export function winTestOne(obj: Expand): boolean {
+  switch (obj.winPos) {
+    case 0: // first test
+      break;
+
+    case 1: // \
+      break;
+
+    default:
+      break;
+  }
+
+  return false;
+}
 export function nextMoves(obj: Board): number[] {
   let next = [];
 
@@ -80,4 +136,46 @@ export function nextMoves(obj: Board): number[] {
     if (index > -1) next.splice(index, 1);
   }
   return next;
+}
+
+export function counting() {
+  let counter = 0;
+  let board = "";
+  let data = solutions;
+  let all: string[] = [];
+
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].includes(",ABC*********D** ")) console.log(i);
+    all.push(...data[i]);
+  }
+
+  console.log(all.length);
+  for (let i = 0; i < all.length - 1; i++) {
+    if (all[i] === all[i + 1]) console.log("Jest", all[i], all[i + 1], i);
+  }
+
+  for (let a = 0; a < 15; a++) {
+    for (let b = 0; b < 15; b++) {
+      if (a === b) continue;
+      for (let c = 0; c < 15; c++) {
+        if (a === c || b === c) continue;
+        for (let d = 0; d < 15; d++) {
+          if (a === d || b === d || c === d) continue;
+          board = "";
+          for (let i = 0; i < 15; i++) {
+            if (i === a) board += "A";
+            else if (i === b) board += "B";
+            else if (i === c) board += "C";
+            else if (i === d) board += "D";
+            else board += "*";
+          }
+          board += " ";
+          all.splice(all.indexOf(board), 1);
+          counter++;
+        }
+      }
+    }
+  }
+  console.log(counter);
+  console.log(all);
 }
